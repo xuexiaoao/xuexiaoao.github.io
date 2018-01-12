@@ -97,8 +97,8 @@ avatar: https://avatars3.githubusercontent.com/u/18185523?s=400&u=f8e172e5197e34
 menu:
   home: / || home
   #about: /about/ || user
-  #tags: /tags/ || tags
-  #categories: /categories/ || th
+  tags: /tags/ || tags
+  categories: /categories/ || th
   archives: /archives/ || archive
   #schedule: /schedule/ || calendar
   #sitemap: /sitemap.xml || sitemap
