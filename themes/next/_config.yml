@@ -82,6 +82,9 @@ seo: false
 index_with_subtitle: false
 
 
+# Avatar
+avatar: https://avatars3.githubusercontent.com/u/18185523?s=400&u=f8e172e5197e349b696e545b69bdc29f36972d57&v=4
+
 # ---------------------------------------------------------------
 # Menu Settings
 # ---------------------------------------------------------------
@@ -126,11 +129,11 @@ scheme: Muse
 # Key is the link label showing to end users.
 # Value before `||` delimeter is the target permalink.
 # Value after `||` delimeter is the name of FontAwesome icon. If icon (with or without delimeter) is not specified, globe icon will be loaded.
-#social:
-  #GitHub: https://github.com/yourname || github
+social:
+  GitHub: https://github.com/xuexiaoao || github
   #E-Mail: mailto:yourname@gmail.com || envelope
   #Google: https://plus.google.com/yourname || google
-  #Twitter: https://twitter.com/yourname || twitter
+  Twitter: https://twitter.com/xuexiaoao || twitter
   #FB Page: https://www.facebook.com/yourname || facebook
   #VK Group: https://vk.com/yourname || vk
   #StackOverflow: https://stackoverflow.com/yourname || stack-overflow
@@ -142,6 +145,9 @@ social_icons:
   enable: true
   icons_only: false
   transition: false
+  GitHub: github
+  Twitter: twitter
+
 
 # Blog rolls
 links_icon: link
