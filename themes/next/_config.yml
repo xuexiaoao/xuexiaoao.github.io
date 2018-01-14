@@ -140,6 +140,7 @@ social:
   #YouTube: https://youtube.com/yourname || youtube
   #Instagram: https://instagram.com/yourname || instagram
   #Skype: skype:yourname?call|chat || skype
+  Telegram: https://t.me/xuexiaoao || telegram
 
 social_icons:
   enable: true
@@ -147,6 +148,7 @@ social_icons:
   transition: false
   GitHub: github
   Twitter: twitter
+  Telegram: telegram
 
 
 # Blog rolls
@@ -283,7 +285,7 @@ custom_logo:
 # Available value:
 #    normal | night | night eighties | night blue | night bright
 # https://github.com/chriskempson/tomorrow-theme
-highlight_theme: normal
+highlight_theme: night bright
 
 
 # ---------------------------------------------------------------
