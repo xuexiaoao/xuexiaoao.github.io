@@ -337,11 +337,19 @@ sitemap:
 
 #### 验证网站
 
-> 根据Google提示，下载验证文件放到Source文件夹，上传到网站即可
+> 根据Google提示，下载验证文件放到Source文件夹，上传到网站，这里需要注意的是放到Source文件夹的任何文件默认是会被hexo处理的，这样会导致验证失败，下一步给出解决方案
 
 ![step-1](https://s1.ax1x.com/2018/01/21/pfywMd.png)
 
-![step-2]()
+
+
+#### 跳过编译验证文件
+
+> 只需要在站点配置文件指定即可，这里的文件路径是相对于Source
+
+```yaml
+skip_render: ['*.html']
+```
 
 #### 添加rebots.txt
 
