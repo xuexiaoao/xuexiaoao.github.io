@@ -290,3 +290,28 @@ feed:
   content_limit: 140 //content为否时，包含的文章概要字数
 ```
 
+##  智能显示更新时间
+
+> 如果没有设置*updated*关键字,Hexo默认取最近一次generate的时间作为更新时间，通常我们的文章不太可能一次性写完，所以真正发布后的更新才需要显示更新时间，这里修改为一天内写完的文章再次修改，不会显示更新时间
+
+打开~\themes\next\layout\_macro\post.swig文件，参考如下修改，可以搜索*updated_at*，只修改了两处
+
+```javascript
+
+{% if theme.post_meta.created_at and theme.post_meta.updated_at and post.updated-post.date>24*3600*1000 %}
+              <span class="post-meta-divider">|</span>
+            {% endif %}
+
+            {% if theme.post_meta.updated_at and post.updated-post.date>24*3600*1000 %}
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              {% if theme.post_meta.item_text %}
+                <span class="post-meta-item-text">{{ __('post.modified') }}&#58;</span>
+              {% endif %}
+              <time title="{{ __('post.modified') }}" itemprop="dateModified" datetime="{{ moment(post.updated).format() }}">
+                {{ date(post.updated, config.date_format) }}
+              </time>
+            {% endif %}
+```
+

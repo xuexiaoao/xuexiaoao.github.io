@@ -81,11 +81,11 @@
               </time>
             {% endif %}
 
-            {% if theme.post_meta.created_at and theme.post_meta.updated_at %}
+            {% if theme.post_meta.created_at and theme.post_meta.updated_at and post.updated-post.date>24*3600*1000 %}
               <span class="post-meta-divider">|</span>
             {% endif %}
 
-            {% if theme.post_meta.updated_at %}
+            {% if theme.post_meta.updated_at and post.updated-post.date>24*3600*1000 %}
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-check-o"></i>
               </span>
