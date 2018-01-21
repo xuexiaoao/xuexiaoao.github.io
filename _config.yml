@@ -105,7 +105,6 @@ markdown:
    permalinkSymbol: ''
 
 
-
 # RSS
 feed:
   type: atom
@@ -114,3 +113,8 @@ feed:
   hub: 
   content:
   content_limit: 140
+
+
+# sitemap
+sitemap:
+    path: sitemap.xml

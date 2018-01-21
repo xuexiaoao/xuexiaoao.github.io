@@ -264,7 +264,7 @@ needmoreshare2:
     options:
       iconStyle: box
       boxForm: horizontal
-      position: middleRight
+      position: bottomRight
       networks: Weibo,Wechat,Douban,QQZone,Twitter,Facebook
 ```
 
@@ -313,5 +313,54 @@ feed:
                 {{ date(post.updated, config.date_format) }}
               </time>
             {% endif %}
+```
+
+## 支持站点地图
+
+### Google
+
+#### 安装插件
+
+```shell
+npm install hexo-generator-sitemap --save
+```
+
+#### 配置
+
+> 在站点配置文件下，添加如下内容
+
+```yaml
+# sitemap
+sitemap:
+    path: sitemap.xml
+```
+
+#### 验证网站
+
+> 根据Google提示，下载验证文件放到Source文件夹，上传到网站即可
+
+![step-1](https://s1.ax1x.com/2018/01/21/pfywMd.png)
+
+![step-2]()
+
+#### 添加rebots.txt
+
+> 在~\source下新建rebots.txt，内容可参考下面
+
+```yaml
+User-agent: *
+Allow: /
+Allow: /archives/
+Allow: /categories/
+Allow: /about/
+
+Disallow: /vendors/
+Disallow: /js/
+Disallow: /css/
+Disallow: /fonts/
+Disallow: /vendors/
+Disallow: /fancybox/
+
+Sitemap: https://xuexiaoao.github.io/sitemap.xml
 ```
 
