@@ -339,9 +339,7 @@ sitemap:
 
 > 根据Google提示，下载验证文件放到Source文件夹，上传到网站，这里需要注意的是放到Source文件夹的任何文件默认是会被hexo处理的，这样会导致验证失败，下一步给出解决方案
 
-![step-1](https://s1.ax1x.com/2018/01/21/pfywMd.png)
-
-
+![step-1](https://s1.ax1x.com/2018/01/21/pfywMd.png)![step-2](https://s1.ax1x.com/2018/01/21/pf5m0e.png)
 
 #### 跳过编译验证文件
 
