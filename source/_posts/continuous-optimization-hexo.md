@@ -268,3 +268,25 @@ needmoreshare2:
       networks: Weibo,Wechat,Douban,QQZone,Twitter,Facebook
 ```
 
+## 开启RSS
+
+### 安装插件
+
+```shell
+npm install hexo-generator-feed --save
+```
+
+### 配置
+
+> 打开站点配置文件，添加如下内容
+
+```yaml
+feed:
+  type: atom //订阅协议（atom/ass2）
+  path: atom.xml //路径 
+  limit: 20		//一次包含文章数量限制
+  hub:  //用不着不管
+  content: //订阅文件是否包含整个文章（"true"为是，留空为否）
+  content_limit: 140 //content为否时，包含的文章概要字数
+```
+
