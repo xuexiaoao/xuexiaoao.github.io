@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>xuexiaoao</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://xuexiaoao.github.io/"/>
+  <updated>2018-01-21T14:40:35.374Z</updated>
+  <id>https://xuexiaoao.github.io/</id>
+  
+  <author>
+    <name>Cooper</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>持续优化Hexo</title>
+    <link href="https://xuexiaoao.github.io/2018/01/15/continuous-optimization-hexo/"/>
+    <id>https://xuexiaoao.github.io/2018/01/15/continuous-optimization-hexo/</id>
+    <published>2018-01-15T14:50:30.000Z</published>
+    <updated>2018-01-21T14:40:35.374Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;本文主要记录Hexo的优化历程，以备后面翻阅。&lt;/p&gt;
+&lt;h2 id=&quot;添加emoji支持&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#添加emoji支持&quot;&gt;&lt;/a&gt;添加emoji支持&lt;/h2&gt;
+&lt;p&gt;由于Hexo的Markdown语法并不支持emoj
+      
+    
+    </summary>
+    
+      <category term="Hexo" scheme="https://xuexiaoao.github.io/categories/Hexo/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>打造个人阅读追踪系统</title>
+    <link href="https://xuexiaoao.github.io/2018/01/13/create-personal-reading-tracking-system/"/>
+    <id>https://xuexiaoao.github.io/2018/01/13/create-personal-reading-tracking-system/</id>
+    <published>2018-01-13T13:03:34.000Z</published>
+    <updated>2018-01-21T14:40:35.374Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;偶然看到&lt;a href=&quot;https://juejin.im/post/59d975b6f265da065f04d8ff&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&amp;lt;&amp;lt;我也来打造一个个人阅读追踪系统&amp;gt;&amp;gt;
+      
+    
+    </summary>
+    
+      <category term="生产力" scheme="https://xuexiaoao.github.io/categories/%E7%94%9F%E4%BA%A7%E5%8A%9B/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>2017年度总结和计划</title>
+    <link href="https://xuexiaoao.github.io/2017/12/31/2017-final-summary-and-plan/"/>
+    <id>https://xuexiaoao.github.io/2017/12/31/2017-final-summary-and-plan/</id>
+    <published>2017-12-31T15:04:53.000Z</published>
+    <updated>2018-01-21T14:40:35.374Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;前言&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;
+&lt;p&gt;拖延症的我终于在2017年12月31日23：59写下了这篇文章。&lt;/p&gt;
+&lt;p&gt;2017年过的很快，上半年忙忙碌碌的准备毕业顺带着找了几个星期的工作，最终
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
