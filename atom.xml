@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://xuexiaoao.github.io/"/>
-  <updated>2018-01-23T13:41:55.805Z</updated>
+  <updated>2018-01-28T15:29:38.034Z</updated>
   <id>https://xuexiaoao.github.io/</id>
   
   <author>
@@ -17,11 +17,33 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>《单核工作法图解》--读书笔记</title>
+    <link href="https://xuexiaoao.github.io/2018/01/28/monotasking-after-reading/"/>
+    <id>https://xuexiaoao.github.io/2018/01/28/monotasking-after-reading/</id>
+    <published>2018-01-28T15:27:23.000Z</published>
+    <updated>2018-01-28T15:29:38.034Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;每个人都有非常多的想法，但是最后要么只是想一想，要么三分钟热度，只有极少数人才会坚持下来，这些人无一例外的对时间管理很是精通。本文主要记录《单核工作法图解》一书的感悟，作者是Staffan Nöteberg，曾写过《番茄工作法图解》这本畅销书。&lt;/
+      
+    
+    </summary>
+    
+      <category term="读书笔记" scheme="https://xuexiaoao.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>持续优化Hexo</title>
     <link href="https://xuexiaoao.github.io/2018/01/15/continuous-optimization-hexo/"/>
     <id>https://xuexiaoao.github.io/2018/01/15/continuous-optimization-hexo/</id>
     <published>2018-01-15T14:50:30.000Z</published>
-    <updated>2018-01-23T13:41:55.805Z</updated>
+    <updated>2018-01-28T15:29:38.034Z</updated>
     
     <summary type="html">
     
@@ -44,7 +66,7 @@
     <link href="https://xuexiaoao.github.io/2018/01/13/create-personal-reading-tracking-system/"/>
     <id>https://xuexiaoao.github.io/2018/01/13/create-personal-reading-tracking-system/</id>
     <published>2018-01-13T13:03:34.000Z</published>
-    <updated>2018-01-23T13:41:55.805Z</updated>
+    <updated>2018-01-28T15:29:38.034Z</updated>
     
     <summary type="html">
     
@@ -66,7 +88,7 @@
     <link href="https://xuexiaoao.github.io/2017/12/31/2017-final-summary-and-plan/"/>
     <id>https://xuexiaoao.github.io/2017/12/31/2017-final-summary-and-plan/</id>
     <published>2017-12-31T15:04:53.000Z</published>
-    <updated>2018-01-23T13:41:55.805Z</updated>
+    <updated>2018-01-28T15:29:38.034Z</updated>
     
     <summary type="html">
     
