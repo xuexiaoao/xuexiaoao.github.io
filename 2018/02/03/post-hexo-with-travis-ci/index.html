@@ -81,19 +81,23 @@
 
 
 
-<meta name="description" content="每个人都有非常多的想法，但是最后要么只是想一想，要么三分钟热度，只有极少数人才会坚持下来，这些人无一例外的对时间管理很是精通。本文主要记录《单核工作法图解》一书的感悟，作者是Staffan Nöteberg，曾写过《番茄工作法图解》这本畅销书。   什么是单核工作法 顾名思义，就是一段时间内只专注于一件事，它有五项基本概念  快捷清单，最多存放当前最重要5项任务的地方，如果需要添加任务，只能删除">
+<meta name="description" content="每次写完新文章后，都需要手动推送到Gayhub的分支上，这样的重复性操作很容易让人厌烦，而且博客源码和博客本身是分离的，只有博客才有版本控制，所以如果身边没有博客源码，那么就不能发布博客了。基于以上的因素，决定采用Travis CI对博客使用持续集成的方式发布文章。  在真正开始之前，需要在博客仓库上新建一个hexo分支，存储博客源码，master分支则继续存储生成的静态博客。 创建Githu">
 <meta property="og:type" content="article">
-<meta property="og:title" content="《单核工作法图解》--读书笔记">
-<meta property="og:url" content="https://xuexiaoao.github.io/2018/01/28/monotasking-after-reading/index.html">
+<meta property="og:title" content="持续集成发布Hexo">
+<meta property="og:url" content="https://xuexiaoao.github.io/2018/02/03/post-hexo-with-travis-ci/index.html">
 <meta property="og:site_name" content="xuexiaoao">
-<meta property="og:description" content="每个人都有非常多的想法，但是最后要么只是想一想，要么三分钟热度，只有极少数人才会坚持下来，这些人无一例外的对时间管理很是精通。本文主要记录《单核工作法图解》一书的感悟，作者是Staffan Nöteberg，曾写过《番茄工作法图解》这本畅销书。   什么是单核工作法 顾名思义，就是一段时间内只专注于一件事，它有五项基本概念  快捷清单，最多存放当前最重要5项任务的地方，如果需要添加任务，只能删除">
+<meta property="og:description" content="每次写完新文章后，都需要手动推送到Gayhub的分支上，这样的重复性操作很容易让人厌烦，而且博客源码和博客本身是分离的，只有博客才有版本控制，所以如果身边没有博客源码，那么就不能发布博客了。基于以上的因素，决定采用Travis CI对博客使用持续集成的方式发布文章。  在真正开始之前，需要在博客仓库上新建一个hexo分支，存储博客源码，master分支则继续存储生成的静态博客。 创建Githu">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://camo.githubusercontent.com/c7591c24e3cf1d248eca89a0571091ab96dd8dcc/68747470733a2f2f696d67332e646f7562616e696f2e636f6d2f6c7069632f7332393630323735342e6a7067">
-<meta property="og:updated_time" content="2018-01-27T16:00:00.000Z">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2017/bg2017121901.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/02/03/9eBcXd.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/02/03/9eBCwt.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/02/03/9eBPTP.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/02/03/9ecmXF.png">
+<meta property="og:updated_time" content="2018-02-03T14:36:29.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="《单核工作法图解》--读书笔记">
-<meta name="twitter:description" content="每个人都有非常多的想法，但是最后要么只是想一想，要么三分钟热度，只有极少数人才会坚持下来，这些人无一例外的对时间管理很是精通。本文主要记录《单核工作法图解》一书的感悟，作者是Staffan Nöteberg，曾写过《番茄工作法图解》这本畅销书。   什么是单核工作法 顾名思义，就是一段时间内只专注于一件事，它有五项基本概念  快捷清单，最多存放当前最重要5项任务的地方，如果需要添加任务，只能删除">
-<meta name="twitter:image" content="https://camo.githubusercontent.com/c7591c24e3cf1d248eca89a0571091ab96dd8dcc/68747470733a2f2f696d67332e646f7562616e696f2e636f6d2f6c7069632f7332393630323735342e6a7067">
+<meta name="twitter:title" content="持续集成发布Hexo">
+<meta name="twitter:description" content="每次写完新文章后，都需要手动推送到Gayhub的分支上，这样的重复性操作很容易让人厌烦，而且博客源码和博客本身是分离的，只有博客才有版本控制，所以如果身边没有博客源码，那么就不能发布博客了。基于以上的因素，决定采用Travis CI对博客使用持续集成的方式发布文章。  在真正开始之前，需要在博客仓库上新建一个hexo分支，存储博客源码，master分支则继续存储生成的静态博客。 创建Githu">
+<meta name="twitter:image" content="http://www.ruanyifeng.com/blogimg/asset/2017/bg2017121901.png">
 
 
 
@@ -123,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="https://xuexiaoao.github.io/2018/01/28/monotasking-after-reading/"/>
+  <link rel="canonical" href="https://xuexiaoao.github.io/2018/02/03/post-hexo-with-travis-ci/"/>
 
 
 
 
 
-  <title>《单核工作法图解》--读书笔记 | xuexiaoao</title>
+  <title>持续集成发布Hexo | xuexiaoao</title>
   
 
 
@@ -265,7 +269,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xuexiaoao.github.io/2018/01/28/monotasking-after-reading/">
+    <link itemprop="mainEntityOfPage" href="https://xuexiaoao.github.io/2018/02/03/post-hexo-with-travis-ci/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Cooper">
@@ -282,7 +286,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">《单核工作法图解》--读书笔记</h1>
+          <h1 class="post-title" itemprop="name headline">持续集成发布Hexo</h1>
         
 
         <div class="post-meta">
@@ -295,8 +299,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-28T23:27:23+08:00">
-                2018-01-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-03T17:58:29+08:00">
+                2018-02-03
               </time>
             
 
@@ -318,8 +322,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/读书笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">读书笔记</span>
+                  <a href="/categories/Hexo/" itemprop="url" rel="index">
+                    <span itemprop="name">Hexo</span>
                   </a>
                 </span>
 
@@ -336,9 +340,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/01/28/monotasking-after-reading/#comments" itemprop="discussionUrl">
+                <a href="/2018/02/03/post-hexo-with-travis-ci/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/01/28/monotasking-after-reading/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2018/02/03/post-hexo-with-travis-ci/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -346,7 +350,7 @@
 
           
           
-             <span id="/2018/01/28/monotasking-after-reading/" class="leancloud_visitors" data-flag-title="《单核工作法图解》--读书笔记">
+             <span id="/2018/02/03/post-hexo-with-travis-ci/" class="leancloud_visitors" data-flag-title="持续集成发布Hexo">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -371,7 +375,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3,100
+                  689
                 </span>
               
 
@@ -387,7 +391,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  10
+                  3
                 </span>
               
             </div>
@@ -408,104 +412,32 @@
       
 
       
-        <blockquote>
-<p>每个人都有非常多的想法，但是最后要么只是想一想，要么三分钟热度，只有极少数人才会坚持下来，这些人无一例外的对时间管理很是精通。本文主要记录《单核工作法图解》一书的感悟，作者是Staffan Nöteberg，曾写过《番茄工作法图解》这本畅销书。</p>
-</blockquote>
-<p><img src="https://camo.githubusercontent.com/c7591c24e3cf1d248eca89a0571091ab96dd8dcc/68747470733a2f2f696d67332e646f7562616e696f2e636f6d2f6c7069632f7332393630323735342e6a7067" alt="githb_url"></p>
-<h2 id="什么是单核工作法"><a class="header-anchor" href="#什么是单核工作法"></a>什么是单核工作法</h2>
-<p>顾名思义，就是一段时间内只专注于一件事，它有五项基本概念</p>
-<ul>
-<li>快捷清单，最多存放当前最重要5项任务的地方，如果需要添加任务，只能删除原有任务</li>
-<li>单核时段，这段时间只用来专心处理快捷清单上的某一项任务，不用在意任务是否顺利完成，只关心是否专注</li>
-<li>全景闹钟，作为单核时段结束的提醒，应该设置为一天中的48个时间点：0：00、0：30、01：00、01：30…，需要注意的是单核时段不少于25分钟，可以根据自己实际情况进行调整</li>
-<li>全景时段，查看快捷清单中的所有代办任务，并且思考“拉金问题”：此时此刻，我的时间最好用来做什么？</li>
-<li>颠倒优先级，应该避免把紧急任务排在重要任务的前面，只有完成重要任务，我们的长期目标才会实现</li>
-</ul>
-<p>既然我们准备去实践<em>单核工作法</em>，那就有必要了解为什么这样去做，这里列出它的五大原理</p>
-<ul>
-<li>已经开始的任务会无条件的占据我们每天的所思所想，直到被完成或删除。</li>
-<li>多任务切换不仅会拖慢速度，而且注定会耗尽大脑能量</li>
-<li>我们应该负责区分优先级的责任，选出<em>现在</em>头号重要的事来做</li>
-<li>我们必须在休息、睡眠、身体、健康这些事上投资，这样才能在日常生活中稳步前进</li>
-<li>我们的方法必须适应环境；要根据自己最新的个人经验，一点一点调整。没有放之四海皆准的方法</li>
-</ul>
-<p>使用单核工作法，首先需要做的就是确认优先级，美国总统艾森豪威尔曾说过&quot;紧急的问题不重要，重要的问题从来不紧急&quot;，我们应该避免把紧急任务安排在重要任务之前；确认优先级后，就可以从代办列表里选出最重要的一项任务进入单核时段，在这一段时间内，专注于现在，不念过往，不畏将来，同时需要设置一个全景闹钟，设置方法可参考上文；在闹铃响后，进入全景时段，此时段需要重新排列所有任务的优先级，思考：此时此刻，我的时间最好用来做什么？以此循环往复，生产力提高指日可待！</p>
-<h2 id="削减代办任务"><a class="header-anchor" href="#削减代办任务"></a>削减代办任务</h2>
+        <p><img src="http://www.ruanyifeng.com/blogimg/asset/2017/bg2017121901.png" alt="travis logo"></p>
 <blockquote>
-<p>必须按照重要程度而不是紧急程度排列优先级</p>
+<p>每次写完新文章后，都需要手动推送到<a href="https://github.com/" target="_blank" rel="noopener">Gayhub</a>的分支上，这样的重复性操作很容易让人厌烦，而且博客源码和博客本身是分离的，只有博客才有版本控制，所以如果身边没有博客源码，那么就不能发布博客了。基于以上的因素，决定采用<a href="https://travis-ci.org/" target="_blank" rel="noopener">Travis CI</a>对博客使用持续集成的方式发布文章。</p>
 </blockquote>
-<p>事情是在不断变化的，优先级也随之改变，为了能够处理突发的重要任务，优先级的排序必须具有灵活性，所以快捷清单中的任务不宜过多。那么如何从浩如烟海的任务中寻找最重要的呢，这就需要注意以下几点：</p>
+<p>在真正开始之前，需要在博客仓库上新建一个hexo分支，存储博客源码，master分支则继续存储生成的静态博客。</p>
+<h4 id="创建github-token"><a class="header-anchor" href="#创建github-token"></a>创建Github Token</h4>
+<p>新建一个token，选择repo权限，这个会在下面设置travis时用到，注意，token只出现一次，需要妥善保存</p>
+<p><img src="https://s1.ax1x.com/2018/02/03/9eBcXd.png" alt=""></p>
+<h4 id="设置travis-ci"><a class="header-anchor" href="#设置travis-ci"></a>设置Travis CI</h4>
+<p>使用github帐号登录<a href="https://travis-ci.org/" target="_blank" rel="noopener">Travis CI</a>，开启博客仓库并设置启动CI的触发条件</p>
+<p><img src="https://s1.ax1x.com/2018/02/03/9eBCwt.png" alt="step 1"></p>
+<p><img src="https://s1.ax1x.com/2018/02/03/9eBPTP.png" alt="setup 2"></p>
 <ul>
-<li>忙碌谬论是一种错误的观点，人们总是相信手上的事情越多，人就越有价值。相反，空闲会促使我们完成工作</li>
-<li>勇敢的说“不”，口是心非，害人害己，如果说了“是”，就一定要做到，所以要保持足够的透明度</li>
-<li>勇敢的停下你的工作，转向更重要的任务。事情是在不断变化的，当下的投入未必会有更好的产出</li>
-<li>必要的<strong>除草</strong>行为，每周一次</li>
+<li>Build only if .travis.yml is present：是只有在.travis.yml文件中配置的分支改变了才构建</li>
+<li>Build pushes：当推送完这个分支后开始构建</li>
+<li>Environment Variables：新建一个变量，value填写上面申请的<strong>token</strong>，name作为变量名，在.travis.yml中用到</li>
 </ul>
-<p>我们使用快捷清单作为代办列表，那么必然会有一个地方存放我们现在不能做，但将来会获得高优先处理的任务，这就是<strong>集草器清单</strong>，除草行为就是针对这份清单的。在除草时，要遵守80/20法则，丢弃那些内心深知永远不会完成的任务，只留下最重要的5项任务。</p>
-<h2 id="现在专注一件事"><a class="header-anchor" href="#现在专注一件事"></a>现在专注一件事</h2>
-<p>单核时段要求我们必须专注于一件事，可是在这个纷杂的世界中，应该如何做才能保持专注呢？</p>
-<h3 id="杜绝多任务切换"><a class="header-anchor" href="#杜绝多任务切换"></a>杜绝多任务切换</h3>
-<p>一个人不可能同时处理多项任务，如果频繁切换任务，只会造成精力的损耗，因此<strong>减少任务切换可以提高生产力</strong>。</p>
-<h3 id="戒绝通知-志愿者小时"><a class="header-anchor" href="#戒绝通知-志愿者小时"></a>戒绝通知&amp;志愿者小时</h3>
-<p>当我们进入了单核时段，正专注于任务时，如果被手机、电脑或者同事打断了思路，再想要回到之前的状态，恐怕需要花费很长的时间，因此我们必须要把“推送”变成“手动收取”，对于同事的到来，可以选择一个固定时间作为<strong>志愿者小时</strong>专门用来处理他们的问题。</p>
-<h3 id="过度时间"><a class="header-anchor" href="#过度时间"></a>过度时间</h3>
-<p>早晨起床到出门上班、离开办公室前的几分钟，都可以被称为<strong>过度时间</strong>，我们可以利用早晨的时间来规划当天的计划，下班前的时间罗列出明天要做什么，这样可以利用<strong>服务生效应</strong>激活我们的潜意识，帮助解决问题。</p>
-<h3 id="培养专注力"><a class="header-anchor" href="#培养专注力"></a>培养专注力</h3>
-<p>安静的环境可以提高生产力，在如今的办公场所，很少会有安静的地方，因此可以利用平静缓和的轻音乐来提高我们的专注。除此之外，还可以利用核对单的<strong>一做一勾</strong>、慢节奏的工具记笔记、思考的时候拿支笔、培养观察力、做比较、怀着自发的目标等方式来培养我们的专注。</p>
-<h2 id="永不拖延"><a class="header-anchor" href="#永不拖延"></a>永不拖延</h2>
-<blockquote>
-<p>从想法到行动，中间隔着一个拖延症的距离。</p>
-</blockquote>
-<p>已经决定了要做什么但是不去做（这不就是说的我嘛 😰 ），这就是在浪费时间，拖延总是把我们置于焦头烂额的境地。要避免拖延，最主要的问题是如何开始。</p>
-<h3 id="时间不一致"><a class="header-anchor" href="#时间不一致"></a>时间不一致</h3>
-<p>人们总是会认为未来有大把时间，因此总会把任务推后，可是最后常常还没有开始工作。所以杜绝拖延需要做到的第一件事情就是：现在就做最重要的事，对紧急程度不作考虑。同时我们对于可支配时间的利用也尽可能的采用单核时段完成，杜绝浪费时间的现象。</p>
-<h3 id="拖延的征兆"><a class="header-anchor" href="#拖延的征兆"></a>拖延的征兆</h3>
-<p>过度规划、外界干扰、没有动力等等一系列的现象，都是拖延症的征兆，要战胜拖延，可以在你不想开始的任务上，开始一项小小的行动，只要开始做这件事，就会感觉好多了。</p>
-<h3 id="具体方法"><a class="header-anchor" href="#具体方法"></a>具体方法</h3>
-<ul>
-<li>时刻保持快捷清单最多只有5项任务，过长的清单会动摇透入的决心</li>
-<li>杜绝规划过度，最好的方法是一边做一边找方法，得到别人的反馈后，再重新调整会有更好的效果</li>
-<li>利用服务生效应，每天下班前思考明天最重要的任务，这会让明早的开工更容易</li>
-<li>随时清理没有用的物品，不管他们多么有趣，多么有用</li>
-<li>视觉化一项大任务，画出所需效果的思维导图</li>
-<li>增强工作中的自主、专精和目的</li>
-<li>列出晨间流程，每天重复使用</li>
-<li>采用手边管理法，把我们喜欢、在乎、总觉得会用到的东西放得远远的</li>
-<li>把大任务拆解成小任务来做</li>
-</ul>
-<h2 id="循序渐进"><a class="header-anchor" href="#循序渐进"></a>循序渐进</h2>
-<blockquote>
-<p>完成任务的时间会永远比你期待的更长。                -------侯世达定律</p>
-<p>工作是会自动膨胀的，给它分配多少时间，它就占满多少时间。                 ------帕金森定律</p>
-</blockquote>
-<p>根据侯世达定律和帕金森定律可知，我们不可能100%的预估任务完成的时间。因为一切都在改变，曾经看起来正确的那件事也在改变，这就促使我们必须要随时改变任务的优先级，小步前进，拥抱变化。</p>
-<p><a href="#%E6%B0%B8%E4%B8%8D%E6%8B%96%E5%BB%B6">永不拖延</a>中提到了任务分解，在这里，他可以帮助我们小步前进，一边做，一边获得新的知识，进而让新知识发挥优势。分解任务后，需要思考<strong>拉金问题</strong>：此时此刻我的时间最好用来做什么？根据重要程度选出最重要的任务，待到任务完成后，把结果分享给利益关系人，得到他们的反馈，根据反馈，重新调整快捷清单中的任务。</p>
-<p>通过循序渐进的方式，我们可以获得时间和空间来调整航向，因此不要轻易的承诺结果，而是承诺你的行为，事先制定好详细的计划，只会抑制你的创造力。</p>
-<h2 id="简化协作"><a class="header-anchor" href="#简化协作"></a>简化协作</h2>
-<p>在现代职场中，很少需要单打独斗的工作，因此与其他人顺利合作是至关重要的。与他人合作难免会有沟通、时间、透明度的问题，所以需要注意以下几点：</p>
-<ul>
-<li>富足心态，寻求双赢，对自己的人生负责</li>
-<li>有效聆听，彻底清楚同事想要表达的信息</li>
-<li>不必关心谁做了什么、如何走到现在这一步的，应该着眼于下一步该如何走好</li>
-<li>有选择的参加必要的会议</li>
-<li>一图胜千言，在事情难以说清楚的情况下，可以使用韦恩图、流程图等图表工具</li>
-<li>尽可能的实现更高层次的沟通，比如面对面</li>
-</ul>
-<p>职场中的每个人都是一个独立的个体，我们必须要认识到他们的强项和短处，如果恰巧和某位同事不合拍的话，可以利用<strong>本杰明.富兰克林效应</strong>来消除他们的负面情绪，比如可以去请教他们所擅长领域的知识，等到下次就会对我们产生更强的同理心。</p>
-<h2 id="给创意充电"><a class="header-anchor" href="#给创意充电"></a>给创意充电</h2>
-<p>身体是革命的本钱，想要高效工作，就有必要照顾好自己的身体，照顾身体可以从以下几个方面入手：</p>
-<ul>
-<li>面对长期任务，强制自己短暂的休息</li>
-<li>经常运动，可站立工作台能提高生产力</li>
-<li>合理膳食，保持稳定的血糖水平，少吃高热量食品</li>
-<li>杜绝加班现象</li>
-<li>遇到久攻不下的问题，可以尝试散步获取寻求同事的意见</li>
-<li>保持每天足够的睡眠</li>
-</ul>
-<p>大脑在进化的过程中学到一件事：如果没有人帮忙，就得自己解决所有问题。但如果和认识的人在一起，就会相互依赖于合作互利的想法，从而放松自己，节省大脑的能量消耗。因此，我们在休息的时候可以给朋友打电话，等到工作时，就可以用上节约的脑力了。</p>
-<p>习惯是培养的，那些生产力高效的人也不是生来就是这样的，因此我们要有意识的培养某些高效的习惯，但是确认目标后，却发现无法坚持，难道要放弃吗？不！与其责备自己缺乏自律，倒不如把步伐迈小点。</p>
-<h2 id="总结"><a class="header-anchor" href="#总结"></a>总结</h2>
-<p>整本书讲述了如何高效的使用<strong>单核工作法</strong>，作为一个一直想要学习时间管理的新人来说，还是有不小难度的，比如文中提到的拖延症就是一大问题！但是也提到分解为小任务后开始尝试去做，就会感觉好很多的解决方案。作为2018年阅读的第一本书，是想要利用从书中学到的方法，实践到工作和学习当中，使自己成为一个生产力高效的人！</p>
+<h4 id="编写-travis-yml文件"><a class="header-anchor" href="#编写-travis-yml文件"></a>编写.travis.yml文件</h4>
+<p>在hexo分支根目录下新建一个.travis.yml文件，具体内容可参考下文：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">language:</span> <span class="string">node_js</span> <span class="comment"># 设置语言</span></span><br><span class="line"><span class="attr">node_js:</span> <span class="string">stable</span> <span class="comment"># 设置相应版本</span></span><br><span class="line"><span class="attr">cache:</span></span><br><span class="line"><span class="attr">    apt:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">    directories:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">node_modules</span></span><br><span class="line"><span class="attr">before_install:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">export</span> <span class="string">TZ='Asia/Shanghai'</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">npm</span> <span class="string">install</span> <span class="string">hexo-cli</span> <span class="bullet">-g</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">chmod</span> <span class="string">+x</span> <span class="string">./publish-to-gh-pages.sh</span></span><br><span class="line"><span class="attr">install:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">npm</span> <span class="string">install</span></span><br><span class="line"><span class="attr">script:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">hexo</span> <span class="string">clean</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">hexo</span> <span class="string">g</span></span><br><span class="line"><span class="attr">after_script:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">./publish-to-gh-pages.sh</span></span><br><span class="line"><span class="attr">branches:</span></span><br><span class="line"><span class="attr">    only:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">hexo</span> <span class="comment">#只监测hexo源码分支的触发条件，</span></span><br><span class="line"><span class="attr">env:</span></span><br><span class="line"><span class="attr">    global:</span></span><br><span class="line"><span class="attr">        - GH_REF:</span> <span class="string">github.com/xuexiaoao/xuexiaoao.github.io.git</span> <span class="comment">#设置GH_REF，注意更改</span></span><br></pre></td></tr></table></figure>
+<p>这个文件其实就是包含命令的脚本，按照before_install—&gt;install—&gt;script—&gt;after_script的顺序执行相应命令，在after_script阶段调用<strong>publish-to-gh-pages</strong>脚本执行推送到master分支的任务。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>!/bin/bash</span><br><span class="line">set -ev</span><br><span class="line"><span class="meta">#</span> master start</span><br><span class="line">git clone https://$&#123;GH_REF&#125; .deploy_git</span><br><span class="line">cd .deploy_git</span><br><span class="line">git checkout master</span><br><span class="line">cd ../</span><br><span class="line">mv .deploy_git/.git/ ./public/</span><br><span class="line"><span class="meta">#</span># master end</span><br><span class="line">cd ./public</span><br><span class="line">git config user.name "xuexiaoao"</span><br><span class="line">git config user.email "xuexiaoaoooo@gmail.com"</span><br><span class="line"><span class="meta">#</span> add commit timestamp</span><br><span class="line">git add .</span><br><span class="line">git commit -m "Travis CI Auto Builder at `date +"%Y-%m-%d %H:%M"`"</span><br><span class="line">git push --force --quiet "https://$&#123;Travis_Token&#125;@$&#123;GH_REF&#125;" master:master #Travis_Token是上文新建的变量名，GH_REF则是在.travis.yml最后定义的变量</span><br></pre></td></tr></table></figure>
+<p>需要注意的是，如果仅仅只是执行<strong>git push</strong>命令，会丢失以前所有的提交信息，所以为了不丢失这些信息，需要执行<strong>master start</strong>到<strong>master end</strong>的内容。</p>
+<h4 id="结束"><a class="header-anchor" href="#结束"></a>结束</h4>
+<p>写完文章就可以在hexo分支下执行git push命令，打开<a href="https://travis-ci.org" target="_blank" rel="noopener">travis</a>，如果发现和下图一样的passed，就说明持续集成发布博客已经大功告成了。</p>
+<p><img src="https://s1.ax1x.com/2018/02/03/9ecmXF.png" alt="build pass"></p>
 
       
     </div>
@@ -553,16 +485,16 @@
 
         <li class="post-copyright-link">
           <strong>本文标题：</strong>
-          <a href="https://xuexiaoao.github.io/2018/01/28/monotasking-after-reading/" title="《单核工作法图解》--读书笔记">《单核工作法图解》--读书笔记</a>
+          <a href="https://xuexiaoao.github.io/2018/02/03/post-hexo-with-travis-ci/" title="持续集成发布Hexo">持续集成发布Hexo</a>
         </li>
 
         <li class="post-copyright-link">
           <strong>本文链接：</strong>
-          <a href="https://xuexiaoao.github.io/2018/01/28/monotasking-after-reading/" title="《单核工作法图解》--读书笔记">https://xuexiaoao.github.io/2018/01/28/monotasking-after-reading/</a>
+          <a href="https://xuexiaoao.github.io/2018/02/03/post-hexo-with-travis-ci/" title="持续集成发布Hexo">https://xuexiaoao.github.io/2018/02/03/post-hexo-with-travis-ci/</a>
         </li>
 
         <li class="post-copyright-date">
-            <strong>发布时间：</strong>2018年1月28日 - 23时01分
+            <strong>发布时间：</strong>2018年2月3日 - 17时02分
         </li>  
 
         <li class="post-copyright-license">
@@ -579,8 +511,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/01/15/continuous-optimization-hexo/" rel="next" title="持续优化Hexo">
-                <i class="fa fa-chevron-left"></i> 持续优化Hexo
+              <a href="/2018/01/28/monotasking-after-reading/" rel="next" title="《单核工作法图解》--读书笔记">
+                <i class="fa fa-chevron-left"></i> 《单核工作法图解》--读书笔记
               </a>
             
           </div>
@@ -588,10 +520,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/02/03/post-hexo-with-travis-ci/" rel="prev" title="持续集成发布Hexo">
-                持续集成发布Hexo <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -758,7 +686,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是单核工作法"><span class="nav-number">1.</span> <span class="nav-text">什么是单核工作法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#削减代办任务"><span class="nav-number">2.</span> <span class="nav-text">削减代办任务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#现在专注一件事"><span class="nav-number">3.</span> <span class="nav-text">现在专注一件事</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#杜绝多任务切换"><span class="nav-number">3.1.</span> <span class="nav-text">杜绝多任务切换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#戒绝通知-志愿者小时"><span class="nav-number">3.2.</span> <span class="nav-text">戒绝通知&amp;志愿者小时</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#过度时间"><span class="nav-number">3.3.</span> <span class="nav-text">过度时间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#培养专注力"><span class="nav-number">3.4.</span> <span class="nav-text">培养专注力</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#永不拖延"><span class="nav-number">4.</span> <span class="nav-text">永不拖延</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#时间不一致"><span class="nav-number">4.1.</span> <span class="nav-text">时间不一致</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拖延的征兆"><span class="nav-number">4.2.</span> <span class="nav-text">拖延的征兆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#具体方法"><span class="nav-number">4.3.</span> <span class="nav-text">具体方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#循序渐进"><span class="nav-number">5.</span> <span class="nav-text">循序渐进</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简化协作"><span class="nav-number">6.</span> <span class="nav-text">简化协作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#给创意充电"><span class="nav-number">7.</span> <span class="nav-text">给创意充电</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">8.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建github-token"><span class="nav-number">1.</span> <span class="nav-text">创建Github Token</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设置travis-ci"><span class="nav-number">2.</span> <span class="nav-text">设置Travis CI</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编写-travis-yml文件"><span class="nav-number">3.</span> <span class="nav-text">编写.travis.yml文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结束"><span class="nav-number">4.</span> <span class="nav-text">结束</span></a></li></ol></div>
             
 
           </div>
@@ -937,9 +865,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'https://xuexiaoao.github.io/2018/01/28/monotasking-after-reading/';
-          this.page.identifier = '2018/01/28/monotasking-after-reading/';
-          this.page.title = '《单核工作法图解》--读书笔记';
+          this.page.url = 'https://xuexiaoao.github.io/2018/02/03/post-hexo-with-travis-ci/';
+          this.page.identifier = '2018/02/03/post-hexo-with-travis-ci/';
+          this.page.title = '持续集成发布Hexo';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://xuexiaoao.disqus.com/embed.js';
