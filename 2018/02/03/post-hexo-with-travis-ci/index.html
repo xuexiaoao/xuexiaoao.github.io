@@ -1,0 +1,298 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  
+  <title>持续集成发布Hexo | cooper&#39;s blog</title>
+  <meta name="author" content="Cooper">
+  
+  <meta name="description" content="从0开始的小破站">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="持续集成发布Hexo"/>
+  <meta property="og:site_name" content="cooper&#39;s blog"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">cooper&#39;s blog</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class=""></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class=""></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class=""></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class=""></i>About
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/atom.xml" title="Subscribe me.">
+			  <i class=""></i>RSS
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">
+			<h1> 持续集成发布Hexo</h1>
+		</div>
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <p><img src="http://www.ruanyifeng.com/blogimg/asset/2017/bg2017121901.png" alt="travis logo"></p>
+<blockquote>
+<p>每次写完新文章后，都需要手动推送到<a href="https://github.com/" target="_blank" rel="noopener">Gayhub</a>的分支上，这样的重复性操作很容易让人厌烦，而且博客源码和博客本身是分离的，只有博客才有版本控制，所以如果身边没有博客源码，那么就不能发布博客了。基于以上的因素，决定采用<a href="https://travis-ci.org/" target="_blank" rel="noopener">Travis CI</a>对博客使用持续集成的方式发布文章。</p>
+</blockquote>
+<p>在真正开始之前，需要在博客仓库上新建一个hexo分支，存储博客源码，master分支则继续存储生成的静态博客。</p>
+<h4 id="创建github-token"><a class="header-anchor" href="#创建github-token"></a>创建Github Token</h4>
+<p>新建一个token，选择repo权限，这个会在下面设置travis时用到，注意，token只出现一次，需要妥善保存</p>
+<p><img src="https://s1.ax1x.com/2018/02/03/9eBcXd.png" alt=""></p>
+<h4 id="设置travis-ci"><a class="header-anchor" href="#设置travis-ci"></a>设置Travis CI</h4>
+<p>使用github帐号登录<a href="https://travis-ci.org/" target="_blank" rel="noopener">Travis CI</a>，开启博客仓库并设置启动CI的触发条件</p>
+<p><img src="https://s1.ax1x.com/2018/02/03/9eBCwt.png" alt="step 1"></p>
+<p><img src="https://s1.ax1x.com/2018/02/03/9eBPTP.png" alt="setup 2"></p>
+<ul>
+<li>Build only if .travis.yml is present：是只有在.travis.yml文件中配置的分支改变了才构建</li>
+<li>Build pushes：当推送完这个分支后开始构建</li>
+<li>Environment Variables：新建一个变量，value填写上面申请的<strong>token</strong>，name作为变量名，在.travis.yml中用到</li>
+</ul>
+<h4 id="编写-travis-yml文件"><a class="header-anchor" href="#编写-travis-yml文件"></a>编写.travis.yml文件</h4>
+<p>在hexo分支根目录下新建一个.travis.yml文件，具体内容可参考下文：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">language:</span> <span class="string">node_js</span> <span class="comment"># 设置语言</span></span><br><span class="line"><span class="attr">node_js:</span> <span class="string">stable</span> <span class="comment"># 设置相应版本</span></span><br><span class="line"><span class="attr">cache:</span></span><br><span class="line"><span class="attr">    apt:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">    directories:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">node_modules</span></span><br><span class="line"><span class="attr">before_install:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">export</span> <span class="string">TZ='Asia/Shanghai'</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">npm</span> <span class="string">install</span> <span class="string">hexo-cli</span> <span class="bullet">-g</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">chmod</span> <span class="string">+x</span> <span class="string">./publish-to-gh-pages.sh</span></span><br><span class="line"><span class="attr">install:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">npm</span> <span class="string">install</span></span><br><span class="line"><span class="attr">script:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">hexo</span> <span class="string">clean</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">hexo</span> <span class="string">g</span></span><br><span class="line"><span class="attr">after_script:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">./publish-to-gh-pages.sh</span></span><br><span class="line"><span class="attr">branches:</span></span><br><span class="line"><span class="attr">    only:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">hexo</span> <span class="comment">#只监测hexo源码分支的触发条件，</span></span><br><span class="line"><span class="attr">env:</span></span><br><span class="line"><span class="attr">    global:</span></span><br><span class="line"><span class="attr">        - GH_REF:</span> <span class="string">github.com/xuexiaoao/xuexiaoao.github.io.git</span> <span class="comment">#设置GH_REF，注意更改</span></span><br></pre></td></tr></table></figure>
+<p>这个文件其实就是包含命令的脚本，按照before_install—&gt;install—&gt;script—&gt;after_script的顺序执行相应命令，在after_script阶段调用<strong>publish-to-gh-pages</strong>脚本执行推送到master分支的任务。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>!/bin/bash</span><br><span class="line">set -ev</span><br><span class="line"><span class="meta">#</span> master start</span><br><span class="line">git clone https://$&#123;GH_REF&#125; .deploy_git</span><br><span class="line">cd .deploy_git</span><br><span class="line">git checkout master</span><br><span class="line">cd ../</span><br><span class="line">mv .deploy_git/.git/ ./public/</span><br><span class="line"><span class="meta">#</span># master end</span><br><span class="line">cd ./public</span><br><span class="line">git config user.name "xuexiaoao"</span><br><span class="line">git config user.email "xuexiaoaoooo@gmail.com"</span><br><span class="line"><span class="meta">#</span> add commit timestamp</span><br><span class="line">git add .</span><br><span class="line">git commit -m "Travis CI Auto Builder at `date +"%Y-%m-%d %H:%M"`"</span><br><span class="line">git push --force --quiet "https://$&#123;Travis_Token&#125;@$&#123;GH_REF&#125;" master:master #Travis_Token是上文新建的变量名，GH_REF则是在.travis.yml最后定义的变量</span><br></pre></td></tr></table></figure>
+<p>需要注意的是，如果仅仅只是执行<strong>git push</strong>命令，会丢失以前所有的提交信息，所以为了不丢失这些信息，需要执行<strong>master start</strong>到<strong>master end</strong>的内容。</p>
+<h4 id="结束"><a class="header-anchor" href="#结束"></a>结束</h4>
+<p>写完文章就可以在hexo分支下执行git push命令，打开<a href="https://travis-ci.org" target="_blank" rel="noopener">travis</a>，如果发现和下图一样的passed，就说明持续集成发布博客已经大功告成了。</p>
+<p><img src="https://s1.ax1x.com/2018/02/03/9ecmXF.png" alt="build pass"></p>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+
+    
+    
+    <a type="button" class="btn btn-default disabled"><i class="fa fa-arrow-circle-o-left"></i>上一页</a>
+    
+
+    <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
+    
+    <a href="/2018/01/28/monotasking-after-reading/" type="button" class="btn btn-default ">下一页<i
+                class="fa fa-arrow-circle-o-right"></i></a>
+    
+
+    
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+    <h2 class="title">留言</h2>
+
+    
+    <div id="disqus_thread" class="ds-thread">
+        <script type="text/javascript">
+            /**
+             * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+             * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+             */
+                /*
+                 var disqus_config = function () {
+                 this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+                 this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                 };
+                 */
+            (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+
+                s.src = '//xuexiaoao.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by
+                Disqus.</a></noscript>
+    </div>
+    
+</section>
+
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2018-02-03 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/Hexo/">Hexo<span>2</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+<script type="text/javascript">
+var disqus_shortname = 'xuexiaoao';
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2019 Cooper
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a>,<a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>,<a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a> and <a href="http://getbootstrap.com/" target="_blank">BOOTSTRA.386</a>. 
+     <br> Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind.386</a>.    
+</p>
+ </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>⬆︎TOP</span>
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+</body>
+   </html>
