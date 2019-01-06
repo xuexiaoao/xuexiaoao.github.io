@@ -13,8 +13,16 @@
 			<a href="<%- config.root %><%- item.path %>" <% if(item.description) { %>title="<%= item.description %>"<% } %>><%= item.title %></a>
 		</h3>
 		</div>
-	<div class="col-md-4">
-		<div class="date">post @ <%= item.date.format(config.date_format) %>  </div>
+	<div class="col-md-4">		
+		<div class="date">
+			<% if (item.top) { %>
+					<span class="post-meta-item-icon">
+						<i class="fa fa-thumb-tack"></i>
+					</span>
+					<font color=DC143C>置顶</font>
+			<% } %>			
+			发表于 @ <%= item.date.format(config.date_format) %>
+		</div>
 		</div>
 	</div>
 	<% } else { %>
