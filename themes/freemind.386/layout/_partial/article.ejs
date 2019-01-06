@@ -1,5 +1,9 @@
 <%- partial('post/title', {item: item, index: false}) %>
 
+<% if (theme.leancloud_visitors.enable) { %>
+	<%- partial('../three-party/lean-analytics',{page: page}) %>
+<% } %>	
+
 <div class="row <% if (post) { %>post<% } else { %>page<% } %>">
 	<!-- cols -->
 	<% if (post) { %>

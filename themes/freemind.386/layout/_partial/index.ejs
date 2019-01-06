@@ -1,5 +1,9 @@
 <div class="row page">
 
+	<% if (theme.leancloud_visitors.enable) { %>
+		<%- partial('../three-party/lean-analytics',{page: page}) %>
+	<% } %>	
+
 	<% if (theme.widgets.length) { %>
 	<div class="col-md-9">
 	<% } else { %>
