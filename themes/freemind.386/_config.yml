@@ -65,5 +65,8 @@ baidu_tongji:
   enable: false
   siteid: cb5448498d7169c668b07c2b255d62c1
 
+# share
+addthis:
+  enable: true
 # search
 #swiftype_key: ZP2ZSuHgipSZfRyU8uTR
