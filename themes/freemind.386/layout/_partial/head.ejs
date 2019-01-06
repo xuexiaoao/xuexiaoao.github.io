@@ -46,6 +46,10 @@
   <% if (theme.favicon){ %>
     <link href="<%- config.root %><%- theme.favicon %>" rel="icon">
   <% } %>
+
+  <% if (theme.gitter.enable){ %>
+    <link rel="stylesheet" href="<%- config.root %>css/gitter.css" media="screen" type="text/css">
+  <% } %>  
   
   <link rel="stylesheet" href="<%- config.root %>css/bootstrap.min.css" media="screen" type="text/css">
   <link rel="stylesheet" href="<%- config.root %>css/font-awesome.css" media="screen" type="text/css">

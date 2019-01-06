@@ -73,5 +73,8 @@ leancloud_visitors:
   enable: true
   app_id: 0k2b1NPxArw0N2DtgkKe7jAs-gzGzoHsz
   app_key: zc6S1tCcBeWgk8rDu1bJbfJf  
+
+gitter:
+  enable: true
 # search
 #swiftype_key: ZP2ZSuHgipSZfRyU8uTR
