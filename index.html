@@ -25,6 +25,10 @@
   
     <link href="/favicon.png" rel="icon">
   
+
+  
+    <link rel="stylesheet" href="/css/gitter.css" media="screen" type="text/css">
+    
   
   <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
   <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
@@ -101,6 +105,115 @@
 <div class="row page">
 
 	
+		
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("0k2b1NPxArw0N2DtgkKe7jAs-gzGzoHsz", "zc6S1tCcBeWgk8rDu1bJbfJf");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+		
+
+	
 	<div class="col-md-9">
 	
 
@@ -122,13 +235,30 @@
 	
 	<!-- display as entry -->
 <div class="row">
-	<div class="col-md-8">
+	<div class="col-md-6">
 		<h3 class="title">
 			<a href="/2018/01/13/create-personal-reading-tracking-system/" >打造个人阅读追踪系统</a>
 		</h3>
 		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2018-01-13  </div>
+	<div class="col-md-5">		
+		<div class="date">
+			
+					<span class="post-meta-item-icon">
+						<i class="fa fa-thumb-tack"></i>
+					</span>
+					<font color=DC143C>置顶</font>
+				
+			
+				<span id="/2018/01/13/create-personal-reading-tracking-system/" class="leancloud_visitors" data-flag-title="打造个人阅读追踪系统">
+				<span class="post-meta-item-icon">
+					<i class="fa fa-eye"></i>
+				</span>
+				<span class="post-meta-item-text"></span>
+				<span class="leancloud-visitors-count"></span>
+				</span>
+								
+			发表于 @ 2018-01-13
+		</div>
 		</div>
 	</div>
 	
@@ -209,13 +339,25 @@
 	
 	<!-- display as entry -->
 <div class="row">
-	<div class="col-md-8">
+	<div class="col-md-6">
 		<h3 class="title">
 			<a href="/2018/02/03/post-hexo-with-travis-ci/" >持续集成发布Hexo</a>
 		</h3>
 		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2018-02-03  </div>
+	<div class="col-md-5">		
+		<div class="date">
+				
+			
+				<span id="/2018/02/03/post-hexo-with-travis-ci/" class="leancloud_visitors" data-flag-title="持续集成发布Hexo">
+				<span class="post-meta-item-icon">
+					<i class="fa fa-eye"></i>
+				</span>
+				<span class="post-meta-item-text"></span>
+				<span class="leancloud-visitors-count"></span>
+				</span>
+								
+			发表于 @ 2018-02-03
+		</div>
 		</div>
 	</div>
 	
@@ -262,13 +404,25 @@
 	
 	<!-- display as entry -->
 <div class="row">
-	<div class="col-md-8">
+	<div class="col-md-6">
 		<h3 class="title">
 			<a href="/2018/01/28/monotasking-after-reading/" >《单核工作法图解》--读书笔记</a>
 		</h3>
 		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2018-01-28  </div>
+	<div class="col-md-5">		
+		<div class="date">
+				
+			
+				<span id="/2018/01/28/monotasking-after-reading/" class="leancloud_visitors" data-flag-title="《单核工作法图解》--读书笔记">
+				<span class="post-meta-item-icon">
+					<i class="fa fa-eye"></i>
+				</span>
+				<span class="post-meta-item-text"></span>
+				<span class="leancloud-visitors-count"></span>
+				</span>
+								
+			发表于 @ 2018-01-28
+		</div>
 		</div>
 	</div>
 	
@@ -387,13 +541,25 @@
 	
 	<!-- display as entry -->
 <div class="row">
-	<div class="col-md-8">
+	<div class="col-md-6">
 		<h3 class="title">
 			<a href="/2018/01/15/continuous-optimization-hexo/" >持续优化Hexo</a>
 		</h3>
 		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2018-01-15  </div>
+	<div class="col-md-5">		
+		<div class="date">
+				
+			
+				<span id="/2018/01/15/continuous-optimization-hexo/" class="leancloud_visitors" data-flag-title="持续优化Hexo">
+				<span class="post-meta-item-icon">
+					<i class="fa fa-eye"></i>
+				</span>
+				<span class="post-meta-item-text"></span>
+				<span class="leancloud-visitors-count"></span>
+				</span>
+								
+			发表于 @ 2018-01-15
+		</div>
 		</div>
 	</div>
 	
@@ -552,13 +718,25 @@
 	
 	<!-- display as entry -->
 <div class="row">
-	<div class="col-md-8">
+	<div class="col-md-6">
 		<h3 class="title">
 			<a href="/2017/12/31/2017-final-summary-and-plan/" >2017年度总结和计划</a>
 		</h3>
 		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2017-12-31  </div>
+	<div class="col-md-5">		
+		<div class="date">
+				
+			
+				<span id="/2017/12/31/2017-final-summary-and-plan/" class="leancloud_visitors" data-flag-title="2017年度总结和计划">
+				<span class="post-meta-item-icon">
+					<i class="fa fa-eye"></i>
+				</span>
+				<span class="post-meta-item-text"></span>
+				<span class="leancloud-visitors-count"></span>
+				</span>
+								
+			发表于 @ 2017-12-31
+		</div>
 		</div>
 	</div>
 	
@@ -700,7 +878,16 @@
 </div> <!-- col-md-3 -->
 
 	
-	
+
+	                                                                                                                                                             
+		<script>                                                                                                                                                                                  
+		  ((window.gitter = {}).chat = {}).options = {                                                                                                                                            
+		   room: 'xuexiaoao/Lobby'                                                                                                                                                                 
+		 };                                                                                                                                                                                      
+		</script>                                                                                                                                                                                 
+		<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>                                                                                                          
+		
+
 </div> <!-- row-fluid -->
 	</div>
   </div>
