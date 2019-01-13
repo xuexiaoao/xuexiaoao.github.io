@@ -2,7 +2,8 @@
 title: 持续优化Hexo
 date: 2018-01-15 22:50:30
 updated: 2018-01-21 00:00:00
-categories: "Hexo"
+tags: hexo
+categories: "Blog"
 ---
 
 本文主要记录Hexo的优化历程，以备后面翻阅。

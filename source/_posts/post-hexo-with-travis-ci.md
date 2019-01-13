@@ -2,7 +2,8 @@
 title: 持续集成发布Hexo
 date: 2018-02-03 17:58:29
 updated: 2018-02-03 22:36:29
-categories: Hexo
+tags: [hexo,CI]
+categories: Blog
 ---
 
 ![travis logo](http://www.ruanyifeng.com/blogimg/asset/2017/bg2017121901.png)

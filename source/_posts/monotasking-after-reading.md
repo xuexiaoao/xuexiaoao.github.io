@@ -1,6 +1,7 @@
 ---
 title: 《单核工作法图解》--读书笔记
-categories: 读书笔记
+categories: 笔记
+tags: [GTD]
 date: 2018-01-28 23:27:23
 updated: 2018-01-28 00:00:00
 ---
