@@ -6,7 +6,7 @@
   <meta http-equiv="cache-control" content="no-cache">
   <meta http-equiv="expires" content="0">
   
-  <title>持续集成发布Hexo | cooper&#39;s blog</title>
+  <title>2018年终小结 | cooper&#39;s blog</title>
   <meta name="author" content="Cooper">
   
   <meta name="description" content="从0开始的小破站">
@@ -14,7 +14,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="持续集成发布Hexo"/>
+  <meta property="og:title" content="2018年终小结"/>
   <meta property="og:site_name" content="cooper&#39;s blog"/>
 
   
@@ -103,7 +103,7 @@
 
 	
 		<div class="page-header">
-			<h1> 持续集成发布Hexo</h1>
+			<h1> 2018年终小结</h1>
 		</div>
 	
 
@@ -229,32 +229,35 @@
 	<div class="mypage">		
 	  		
 
-	  <p><img src="http://www.ruanyifeng.com/blogimg/asset/2017/bg2017121901.png" alt="travis logo"></p>
-<blockquote>
-<p>每次写完新文章后，都需要手动推送到<a href="https://github.com/" target="_blank" rel="noopener">Gayhub</a>的分支上，这样的重复性操作很容易让人厌烦，而且博客源码和博客本身是分离的，只有博客才有版本控制，所以如果身边没有博客源码，那么就不能发布博客了。基于以上的因素，决定采用<a href="https://travis-ci.org/" target="_blank" rel="noopener">Travis CI</a>对博客使用持续集成的方式发布文章。</p>
-</blockquote>
-<p>在真正开始之前，需要在博客仓库上新建一个hexo分支，存储博客源码，master分支则继续存储生成的静态博客。</p>
-<h4 id="创建github-token"><a class="header-anchor" href="#创建github-token"></a>创建Github Token</h4>
-<p>新建一个token，选择repo权限，这个会在下面设置travis时用到，注意，token只出现一次，需要妥善保存</p>
-<p><img src="https://s1.ax1x.com/2018/02/03/9eBcXd.png" alt=""></p>
-<h4 id="设置travis-ci"><a class="header-anchor" href="#设置travis-ci"></a>设置Travis CI</h4>
-<p>使用github帐号登录<a href="https://travis-ci.org/" target="_blank" rel="noopener">Travis CI</a>，开启博客仓库并设置启动CI的触发条件</p>
-<p><img src="https://s1.ax1x.com/2018/02/03/9eBCwt.png" alt="step 1"></p>
-<p><img src="https://s1.ax1x.com/2018/02/03/9eBPTP.png" alt="setup 2"></p>
+	  <h3 id="前言"><a class="header-anchor" href="#前言"></a>前言</h3>
+<p>参加工作也有一年多了，去年跟风写了<a href="https://xuexiaoao.github.io/2017-final-summary-and-plan/">2017年度总结和计划</a>，列出了一堆计划，坚持了一段时间后，然后就没有什么事情了😰。想想写下那些计划时的踌躇满志，也是蛮尴尬的。总体来看，虽没有按照指定的计划执行，但是这一年的收获也还算不小。接下来，就来小结今年的成果，顺带展望2019（喂，写下这篇文章的时候，已经是2019了😴）。</p>
+<h3 id="回顾2018"><a class="header-anchor" href="#回顾2018"></a>回顾2018</h3>
+<p>年初转正后，终于不再像之前轻松到每天五点准时下班，渐渐的手里工作越来越多，接触到的方向也越来越广，压力也逐渐变大，甚至有几次发版本一直到深夜12点。这一年，上半年差不多都沉浸在<strong>React</strong>前端方向，虽然不是自己感兴趣的内容，但也是认真研究了一段时间，随着新加入的同事越来越多，甚至来了一个真正的前端er，需要我这种伪前端去写的东西越来越少了，这才有机会把精力转向后端。</p>
+<p>有了时间之后，加上组内想要转向<strong>Spring Cloud</strong>微服务技术栈，所以花费了大量时间是去调研和实践微服务相关的技术实现，也总结了几篇文章，算是一点输出。</p>
+<p>在这一年，发现了自己有别于同事的一项技能：<strong>检索能力</strong>，不止一次听到同事提到：“我怎么没有搜到”，“在哪里可以查到”，等等类似的内容。在此以前，真的没有发现检索也是一种能力，可能还是要归功于<strong>Google</strong>吧。</p>
+<p>除此之外，发现除了Coding，自己对于<strong>如何提升团队效率</strong>、<strong>规范开发、发布流程</strong>、<strong>代码整洁</strong>等等软技能非常感兴趣，甚至花费了大量的时间去实践某些思路，但是前方的道路是遥远且曲折的，在我们组内恐怕是很难施展开手脚。但这也明确了我理想中自己的样子和想要加入团队的氛围。</p>
+<p>接下来是对去年列出计划的检查：</p>
 <ul>
-<li>Build only if .travis.yml is present：是只有在.travis.yml文件中配置的分支改变了才构建</li>
-<li>Build pushes：当推送完这个分支后开始构建</li>
-<li>Environment Variables：新建一个变量，value填写上面申请的<strong>token</strong>，name作为变量名，在.travis.yml中用到</li>
+<li>每个月读一本书，并且有读书笔记  （读完5本，在读的，额，好多本）</li>
+<li>每周写一篇技术博客并发布到github中  （去年博客中总共有五篇文章，有一篇还是年终总结😭）</li>
+<li>每天晚上确保至少2个小时的学习时间   （这个倒是基本上完成了）</li>
+<li>做好文档输出工作，确保日后再有类似工作，一定会找到对应文档    （文档有一定的输出，还算可以）</li>
+<li>减肥，保证体重不会超过2017年  （怎么说呢，年末体检，体重确实没去年沉了，-2斤）</li>
+<li>学习实践GTD方法论，具备一定的时间管理分配能力，并实践到上面计划中  （确实学习了，但是坚持的不太好，而且一直在挑选工具体系，有点本末倒置）</li>
 </ul>
-<h4 id="编写-travis-yml文件"><a class="header-anchor" href="#编写-travis-yml文件"></a>编写.travis.yml文件</h4>
-<p>在hexo分支根目录下新建一个.travis.yml文件，具体内容可参考下文：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">language:</span> <span class="string">node_js</span> <span class="comment"># 设置语言</span></span><br><span class="line"><span class="attr">node_js:</span> <span class="string">stable</span> <span class="comment"># 设置相应版本</span></span><br><span class="line"><span class="attr">cache:</span></span><br><span class="line"><span class="attr">    apt:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">    directories:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">node_modules</span></span><br><span class="line"><span class="attr">before_install:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">export</span> <span class="string">TZ='Asia/Shanghai'</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">npm</span> <span class="string">install</span> <span class="string">hexo-cli</span> <span class="bullet">-g</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">chmod</span> <span class="string">+x</span> <span class="string">./publish-to-gh-pages.sh</span></span><br><span class="line"><span class="attr">install:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">npm</span> <span class="string">install</span></span><br><span class="line"><span class="attr">script:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">hexo</span> <span class="string">clean</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">hexo</span> <span class="string">g</span></span><br><span class="line"><span class="attr">after_script:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">./publish-to-gh-pages.sh</span></span><br><span class="line"><span class="attr">branches:</span></span><br><span class="line"><span class="attr">    only:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">hexo</span> <span class="comment">#只监测hexo源码分支的触发条件，</span></span><br><span class="line"><span class="attr">env:</span></span><br><span class="line"><span class="attr">    global:</span></span><br><span class="line"><span class="attr">        - GH_REF:</span> <span class="string">github.com/xuexiaoao/xuexiaoao.github.io.git</span> <span class="comment">#设置GH_REF，注意更改</span></span><br></pre></td></tr></table></figure>
-<p>这个文件其实就是包含命令的脚本，按照before_install—&gt;install—&gt;script—&gt;after_script的顺序执行相应命令，在after_script阶段调用<strong>publish-to-gh-pages</strong>脚本执行推送到master分支的任务。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>!/bin/bash</span><br><span class="line">set -ev</span><br><span class="line"><span class="meta">#</span> master start</span><br><span class="line">git clone https://$&#123;GH_REF&#125; .deploy_git</span><br><span class="line">cd .deploy_git</span><br><span class="line">git checkout master</span><br><span class="line">cd ../</span><br><span class="line">mv .deploy_git/.git/ ./public/</span><br><span class="line"><span class="meta">#</span># master end</span><br><span class="line">cd ./public</span><br><span class="line">git config user.name "xuexiaoao"</span><br><span class="line">git config user.email "xuexiaoaoooo@gmail.com"</span><br><span class="line"><span class="meta">#</span> add commit timestamp</span><br><span class="line">git add .</span><br><span class="line">git commit -m "Travis CI Auto Builder at `date +"%Y-%m-%d %H:%M"`"</span><br><span class="line">git push --force --quiet "https://$&#123;Travis_Token&#125;@$&#123;GH_REF&#125;" master:master #Travis_Token是上文新建的变量名，GH_REF则是在.travis.yml最后定义的变量</span><br></pre></td></tr></table></figure>
-<p>需要注意的是，如果仅仅只是执行<strong>git push</strong>命令，会丢失以前所有的提交信息，所以为了不丢失这些信息，需要执行<strong>master start</strong>到<strong>master end</strong>的内容。</p>
-<h4 id="结束"><a class="header-anchor" href="#结束"></a>结束</h4>
-<p>写完文章就可以在hexo分支下执行git push命令，打开<a href="https://travis-ci.org" target="_blank" rel="noopener">travis</a>，如果发现和下图一样的passed，就说明持续集成发布博客已经大功告成了。</p>
-<p><img src="https://s1.ax1x.com/2018/02/03/9ecmXF.png" alt="build pass"></p>
+<p>总的来看，有一半没完成吧，果然写年终总结就是在打脸。</p>
+<h3 id="展望2019"><a class="header-anchor" href="#展望2019"></a>展望2019</h3>
+<p>根据2018的经验来看，去年的计划有很多不合理的地方，比如每周一篇博客的硬性指标，感觉就像是在完成KPI一样，导致断更几周后，完全不想继续写下去了（说白了还是懒，不想写😏）。除了技术性的计划外，今年还打算Get一门其他领域的技能。嗯，正好去年3月份朋友送了一把尤克里里，今年拿来学学吧（去年送的，今年才想起来学，这…）。</p>
+<p>接下来列出2019年的计划：</p>
+<ul>
+<li>每月一书，最好有读书笔记或者思维导图</li>
+<li>学习了解一门新的语言或者技术，比如Go、serverless等等</li>
+<li>写技术博客，最好是原创，如果没时间可以整理笔记到<a href="https://github.com/xuexiaoao/study-note" target="_blank" rel="noopener">study-note</a></li>
+<li>尝试参与开源项目，提交几次PR</li>
+<li>继续深入实践GTD，使之成为习惯</li>
+<li>学会尤克里里，至少会弹两首曲子</li>
+</ul>
+<p>但愿明年的这个时候少打点脸~</p>
 	  
 	</div>
 	
@@ -266,13 +269,12 @@
 
     
     
-    <a href="/2019/01/06/summary-of-the-end-of-2018/" type="button" class="btn btn-default"><i
-                class="fa fa-arrow-circle-o-left"></i> 上一页</a>
+    <a type="button" class="btn btn-default disabled"><i class="fa fa-arrow-circle-o-left"></i>上一页</a>
     
 
     <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
     
-    <a href="/2018/01/28/monotasking-after-reading/" type="button" class="btn btn-default ">下一页<i
+    <a href="/2018/02/03/post-hexo-with-travis-ci/" type="button" class="btn btn-default ">下一页<i
                 class="fa fa-arrow-circle-o-right"></i></a>
     
 
@@ -326,12 +328,12 @@
 	
 	<div class="meta-widget">
 	<i class="fa fa-clock-o"></i>
-	2018-02-03 
+	2019-01-06 
 	</div>
 	
 
 	
-		<span id="/2018/02/03/post-hexo-with-travis-ci/" class="leancloud_visitors" data-flag-title="持续集成发布Hexo">
+		<span id="/2019/01/06/summary-of-the-end-of-2018/" class="leancloud_visitors" data-flag-title="2018年终小结">
 		<span class="post-meta-item-icon">
 			<i class="fa fa-eye"></i>
 		</span>
@@ -347,7 +349,7 @@
     <ul id="categorys" class="tag_box list-unstyled collapse in">
           
   <li>
-    <li><a href="/categories/Blog/">Blog<span>2</span></a></li>
+    <li><a href="/categories/个人/">个人<span>2</span></a></li>
   </li>
 
     </ul>
@@ -360,7 +362,7 @@
 	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
     <ul id="tags" class="tag_box list-unstyled collapse in">	  
 	    
-  <li><a href="/tags/hexo/">hexo<span>2</span></a></li> <li><a href="/tags/CI/">CI<span>1</span></a></li>
+  <li><a href="/tags/年终总结/">年终总结<span>2</span></a></li>
     </ul>
 	</div>
 		
