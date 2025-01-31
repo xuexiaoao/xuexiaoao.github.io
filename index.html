@@ -1,0 +1,701 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  
+  <title>cooper&#39;s blog</title>
+  <meta name="author" content="Cooper">
+  
+  <meta name="description" content="从 0 开始的小破站">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="cooper&#39;s blog"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+
+  
+    <link rel="stylesheet" href="/css/gitter.css" media="screen" type="text/css">
+    
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">cooper&#39;s blog</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class=""></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class=""></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class=""></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class=""></i>About
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/atom.xml" title="Subscribe me.">
+			  <i class=""></i>RSS
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 <div class="page-header logo">
+  <h1>从 0 开始的小破站<span class="blink-fast">∎</span></h1>
+</div>
+
+<div class="row page">
+
+	
+		
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("0k2b1NPxArw0N2DtgkKe7jAs-gzGzoHsz", "zc6S1tCcBeWgk8rDu1bJbfJf");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+		
+
+	
+	<div class="col-md-9">
+	
+
+		<div class="slogan">
+
+
+		<i class="fa fa-heart blink-slow"></i>
+
+		永远相信美好的事情即将发生
+
+</div>    
+
+		<div id="top_search"></div>
+		<div class="mypage">
+		
+		<!-- title and entry -->
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-6">
+		<h3 class="title">
+			<a href="/2018/01/13/create-personal-reading-tracking-system/" >打造个人阅读追踪系统</a>
+		</h3>
+		</div>
+	<div class="col-md-5">		
+		<div class="date">
+			
+					<span class="post-meta-item-icon">
+						<i class="fa fa-thumb-tack"></i>
+					</span>
+					<font color=DC143C>置顶</font>
+				
+			
+				<span id="/2018/01/13/create-personal-reading-tracking-system/" class="leancloud_visitors" data-flag-title="打造个人阅读追踪系统">
+				<span class="post-meta-item-icon">
+					<i class="fa fa-eye"></i>
+				</span>
+				<span class="post-meta-item-text"></span>
+				<span class="leancloud-visitors-count"></span>
+				</span>
+								
+			发表于 @ 2018-01-13
+		</div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<blockquote>
+<p>偶然看到<a href="https://juejin.im/post/59d975b6f265da065f04d8ff" target="_blank" rel="noopener">&lt;&lt;我也来打造一个个人阅读追踪系统&gt;&gt;</a>，觉得这个想法非常不错。于是利用工作外的时间，经过半个月的折腾，初步搭成了一个自动化的个人阅读追踪系统。在这个系统搭成后，才发现 Read it Later = Read Never 离自己好近。</p>
+</blockquote>
+<h2 id="工具"><a class="header-anchor" href="#工具"></a>工具</h2>
+<p>包括但不仅仅局限于下面的工具，这里我使用<em>Instapaper</em>作为稍后阅读的工具，<em>IFTTT</em>作为连接<em>Instapaper</em>和<em>Cloud</em>的中枢，而<em>WebTask</em>作为我的云端处理工具，负责真正请求各类 API。</p>
+<ul>
+<li><a href="https://github.com/" target="_blank" rel="noopener">Github</a></li>
+<li><a href="https://www.zenhub.com/" target="_blank" rel="noopener">Zenhub</a></li>
+<li><a href="https://www.instapaper.com" target="_blank" rel="noopener">Instapaper</a></li>
+<li><a href="https://ifttt.com" target="_blank" rel="noopener">IFTTT</a></li>
+<li><a href="https://webtask.io" target="_blank" rel="noopener">WebTask</a></li>
+</ul>
+	
+	</div>
+  <a type="button" href="/2018/01/13/create-personal-reading-tracking-system/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-6">
+		<h3 class="title">
+			<a href="/2025/01/28/2024-sui-sui-nian/" >2024 碎碎念</a>
+		</h3>
+		</div>
+	<div class="col-md-5">		
+		<div class="date">
+				
+			
+				<span id="/2025/01/28/2024-sui-sui-nian/" class="leancloud_visitors" data-flag-title="2024 碎碎念">
+				<span class="post-meta-item-icon">
+					<i class="fa fa-eye"></i>
+				</span>
+				<span class="post-meta-item-text"></span>
+				<span class="leancloud-visitors-count"></span>
+				</span>
+								
+			发表于 @ 2025-01-28
+		</div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h1 id="有点惭愧的前言"><a class="header-anchor" href="#有点惭愧的前言"></a>有点惭愧的前言</h1>
+<p>打眼一望，博客上次更新的日期竟然是在 2019 年，这 6 年里接近一半时间都处在疫情之中，而在疫情即将放开的 22 年本人毅然决然的从一家央企辞职回家（谁也没想到口罩会以这种形式突然放开🤷），回家之后则在本地某腰部传统制造业任职。这 6 年时间恍恍惚惚眨眼就过，期间以人生最密集的频率参加了好多朋友的婚礼，大大小小，线上线下，确实有些羡慕；也因为各种机缘巧合认识了几个朋友（主要是没想到人到 30 还能认识新朋友，我这个人并不愿意社交）；23 年去看了最喜欢的万能青年旅店上海梅奔专场，24 年又在老家音乐节上看到万青的压轴演出（万青牛逼）。哦，对了，23 年养了一只🐱，名字叫图灵（哈哈哈，想必计算机从业者对这个名字并不陌生），小图胆子小得很，写这篇碎碎念的时候，还躲在老家的卧室床帘下面不出来。</p>
+<p><img src="https://s2.loli.net/2025/01/31/4DzYswMELC57qVf.jpg" alt="IMG_7926.jpeg" title="图灵美照"></p>
+<p>简简单单总结了这 6 年的过往，里面竟然一点技术也没提到，看样子果然是年纪大了，又或者如我所说：并没有那么喜欢技术。不管如何，现在的我和 6 年前确实不太一样了，虽然还是喜欢钻研点东西，但可惜已没有自己的时间，虽然还对技术有所追求，但已对工作作出太多妥协。其实当初建立这个博客的目的就是想记录自己的技术成长，可惜懒懒的我并没有坚持下来，从 19 年断更至今，实在是惭愧😳。不过经历了 2024 这让人难忘的一年，让我又拾起了想要记录的心思，虽然未必是技术的内容（或许我关注的点早已不只有技术了）。</p>
+	
+	</div>
+  <a type="button" href="/2025/01/28/2024-sui-sui-nian/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-6">
+		<h3 class="title">
+			<a href="/2019/01/06/summary-of-the-end-of-2018/" >2018 年终小结</a>
+		</h3>
+		</div>
+	<div class="col-md-5">		
+		<div class="date">
+				
+			
+				<span id="/2019/01/06/summary-of-the-end-of-2018/" class="leancloud_visitors" data-flag-title="2018 年终小结">
+				<span class="post-meta-item-icon">
+					<i class="fa fa-eye"></i>
+				</span>
+				<span class="post-meta-item-text"></span>
+				<span class="leancloud-visitors-count"></span>
+				</span>
+								
+			发表于 @ 2019-01-06
+		</div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h3 id="前言"><a class="header-anchor" href="#前言"></a>前言</h3>
+<p>参加工作也有一年多了，去年跟风写了<a href="https://xuexiaoao.github.io/2017-final-summary-and-plan/">2017 年度总结和计划</a>，列出了一堆计划，坚持了一段时间后，然后就没有什么事情了😰。想想写下那些计划时的踌躇满志，也是蛮尴尬的。总体来看，虽没有按照指定的计划执行，但是这一年的收获也还算不小。接下来，就来小结今年的成果，顺带展望 2019（喂，写下这篇文章的时候，已经是 2019 了😴）。</p>
+	
+	</div>
+  <a type="button" href="/2019/01/06/summary-of-the-end-of-2018/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-6">
+		<h3 class="title">
+			<a href="/2018/02/03/post-hexo-with-travis-ci/" >持续集成发布 Hexo</a>
+		</h3>
+		</div>
+	<div class="col-md-5">		
+		<div class="date">
+				
+			
+				<span id="/2018/02/03/post-hexo-with-travis-ci/" class="leancloud_visitors" data-flag-title="持续集成发布 Hexo">
+				<span class="post-meta-item-icon">
+					<i class="fa fa-eye"></i>
+				</span>
+				<span class="post-meta-item-text"></span>
+				<span class="leancloud-visitors-count"></span>
+				</span>
+								
+			发表于 @ 2018-02-03
+		</div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<p><img src="http://www.ruanyifeng.com/blogimg/asset/2017/bg2017121901.png" alt="travis logo"></p>
+<blockquote>
+<p>每次写完新文章后，都需要手动推送到<a href="https://github.com/" target="_blank" rel="noopener">Gayhub</a>的分支上，这样的重复性操作很容易让人厌烦，而且博客源码和博客本身是分离的，只有博客才有版本控制，所以如果身边没有博客源码，那么就不能发布博客了。基于以上的因素，决定采用<a href="https://travis-ci.org/" target="_blank" rel="noopener">Travis CI</a>对博客使用持续集成的方式发布文章。</p>
+</blockquote>
+<p>在真正开始之前，需要在博客仓库上新建一个 hexo 分支，存储博客源码，master 分支则继续存储生成的静态博客。</p>
+	
+	</div>
+  <a type="button" href="/2018/02/03/post-hexo-with-travis-ci/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-6">
+		<h3 class="title">
+			<a href="/2018/01/28/monotasking-after-reading/" >《单核工作法图解》--读书笔记</a>
+		</h3>
+		</div>
+	<div class="col-md-5">		
+		<div class="date">
+				
+			
+				<span id="/2018/01/28/monotasking-after-reading/" class="leancloud_visitors" data-flag-title="《单核工作法图解》--读书笔记">
+				<span class="post-meta-item-icon">
+					<i class="fa fa-eye"></i>
+				</span>
+				<span class="post-meta-item-text"></span>
+				<span class="leancloud-visitors-count"></span>
+				</span>
+								
+			发表于 @ 2018-01-28
+		</div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<blockquote>
+<p>每个人都有非常多的想法，但是最后要么只是想一想，要么三分钟热度，只有极少数人才会坚持下来，这些人无一例外的对时间管理很是精通。本文主要记录《单核工作法图解》一书的感悟，作者是 Staffan Nöteberg，曾写过《番茄工作法图解》这本畅销书。</p>
+</blockquote>
+<p><img src="https://camo.githubusercontent.com/c7591c24e3cf1d248eca89a0571091ab96dd8dcc/68747470733a2f2f696d67332e646f7562616e696f2e636f6d2f6c7069632f7332393630323735342e6a7067" alt="githb_url"></p>
+	
+	</div>
+  <a type="button" href="/2018/01/28/monotasking-after-reading/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-6">
+		<h3 class="title">
+			<a href="/2018/01/15/continuous-optimization-hexo/" >持续优化 Hexo</a>
+		</h3>
+		</div>
+	<div class="col-md-5">		
+		<div class="date">
+				
+			
+				<span id="/2018/01/15/continuous-optimization-hexo/" class="leancloud_visitors" data-flag-title="持续优化 Hexo">
+				<span class="post-meta-item-icon">
+					<i class="fa fa-eye"></i>
+				</span>
+				<span class="post-meta-item-text"></span>
+				<span class="leancloud-visitors-count"></span>
+				</span>
+								
+			发表于 @ 2018-01-15
+		</div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<p>本文主要记录 Hexo 的优化历程，以备后面翻阅。</p>
+	
+	</div>
+  <a type="button" href="/2018/01/15/continuous-optimization-hexo/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-6">
+		<h3 class="title">
+			<a href="/2017/12/31/2017-final-summary-and-plan/" >2017 年度总结和计划</a>
+		</h3>
+		</div>
+	<div class="col-md-5">		
+		<div class="date">
+				
+			
+				<span id="/2017/12/31/2017-final-summary-and-plan/" class="leancloud_visitors" data-flag-title="2017 年度总结和计划">
+				<span class="post-meta-item-icon">
+					<i class="fa fa-eye"></i>
+				</span>
+				<span class="post-meta-item-text"></span>
+				<span class="leancloud-visitors-count"></span>
+				</span>
+								
+			发表于 @ 2017-12-31
+		</div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h3 id="前言"><a class="header-anchor" href="#前言"></a>前言</h3>
+<p>拖延症的我终于在 2017 年 12 月 31 日 23:59 写下了这篇文章。</p>
+<p>2017 年过的很快，上半年忙忙碌碌的准备毕业顺带着找了几个星期的工作，最终选择了联通软件研究院，紧接着就来到了济南，一个遍地把子肉的泉城😭参加工作。来到公司后，遇到了对我敦敦教导的师傅、平易近人的老大还有一群友善的同事。在长达半年的试用期里，发现了自己非常非常多的不足，同时也接触到了以前没有机会接触的领域，谨以此篇文章总结我的 2017，展望未来！</p>
+	
+	</div>
+  <a type="button" href="/2017/12/31/2017-final-summary-and-plan/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+
+		</div>
+
+		<!-- pagination -->
+		<div>
+  		<center>
+		<div class="pagination">
+
+   
+</div>
+
+  		</center>
+		</div>
+
+		
+		
+	</div> <!-- col-md-9 -->
+
+	
+		<div class="col-md-3">
+	<div id="sidebar">
+	
+			
+  <div id="site_search">
+   <div class="form-group">
+    <input type="text" id="local-search-input" name="q" results="0" placeholder="搜索" class="st-search-input st-default-search-input form-control"/>
+   </div>  
+  <div id="local-search-result"></div>
+  </div>
+
+
+		
+			
+	<div class="widget">
+		<h4>分类</h4>
+		<ul class="tag_box inline list-unstyled">
+		
+			<li><a href="/categories/Blog/">Blog<span>2</span></a></li>
+		
+			<li><a href="/categories/idea/">idea<span>1</span></a></li>
+		
+			<li><a href="/categories/个人/">个人<span>3</span></a></li>
+		
+			<li><a href="/categories/笔记/">笔记<span>1</span></a></li>
+		
+		</ul>
+	</div>
+
+		
+			
+	<div class="widget">
+		<h4>标签云</h4>
+		<ul class="tag_box inline list-unstyled">		
+		
+			<li><a href="/tags/GTD/">GTD<span>2</span></a></li>
+		
+			<li><a href="/tags/CI/">CI<span>1</span></a></li>
+		
+			<li><a href="/tags/hexo/">hexo<span>2</span></a></li>
+		
+			<li><a href="/tags/年终总结/">年终总结<span>3</span></a></li>
+		
+		 
+		</ul>
+	</div>
+
+
+		
+			
+<div class="widget">
+  <h4>最新文章</h4>
+  <ul class="entry list-unstyled">
+    
+      <li>
+        <a href="/2025/01/28/2024-sui-sui-nian/" ><i class="fa fa-file-o"></i>2024 碎碎念</a>
+      </li>
+    
+      <li>
+        <a href="/2019/01/06/summary-of-the-end-of-2018/" ><i class="fa fa-file-o"></i>2018 年终小结</a>
+      </li>
+    
+      <li>
+        <a href="/2018/02/03/post-hexo-with-travis-ci/" ><i class="fa fa-file-o"></i>持续集成发布 Hexo</a>
+      </li>
+    
+      <li>
+        <a href="/2018/01/28/monotasking-after-reading/" ><i class="fa fa-file-o"></i>《单核工作法图解》--读书笔记</a>
+      </li>
+    
+      <li>
+        <a href="/2018/01/15/continuous-optimization-hexo/" ><i class="fa fa-file-o"></i>持续优化 Hexo</a>
+      </li>
+    
+  </ul>
+</div>
+
+		
+			
+<div class="widget">
+	<h4>链接</h4>
+	<ul class="blogroll list-unstyled">
+	
+		<li><i class="fa fa-envelope"></i><a href="mailto:xuexiaoaoooo@gmail.com" title="mail" target="_blank"]);">Mail</a></li>
+	
+		<li><i class="fa fa-twitter"></i><a href="https://twitter.com/xuexiaoao" title="twitter" target="_blank"]);">Twitter</a></li>
+	
+		<li><i class="fa fa-github"></i><a href="https://github.com/xuexiaoao" title="github" target="_blank"]);">Github</a></li>
+	
+	</ul>
+</div>
+
+
+		
+	</div> <!-- sidebar -->
+</div> <!-- col-md-3 -->
+
+	
+
+	                                                                                                                                                             
+		<script>                                                                                                                                                                                  
+		  ((window.gitter = {}).chat = {}).options = {                                                                                                                                            
+		   room: 'xuexiaoao/Lobby'                                                                                                                                                                 
+		 };                                                                                                                                                                                      
+		</script>                                                                                                                                                                                 
+		<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>                                                                                                          
+		
+
+</div> <!-- row-fluid -->
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2025 Cooper
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a>,<a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>,<a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a> and <a href="http://getbootstrap.com/" target="_blank">BOOTSTRA.386</a>. 
+     <br> Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind.386</a>.    
+</p>
+ </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>⬆︎TOP</span>
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+</body>
+   </html>

@@ -1,0 +1,433 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  
+  <title>2024 碎碎念 | cooper&#39;s blog</title>
+  <meta name="author" content="Cooper">
+  
+  <meta name="description" content="从 0 开始的小破站">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="2024 碎碎念"/>
+  <meta property="og:site_name" content="cooper&#39;s blog"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+
+  
+    <link rel="stylesheet" href="/css/gitter.css" media="screen" type="text/css">
+    
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">cooper&#39;s blog</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class=""></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class=""></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class=""></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class=""></i>About
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/atom.xml" title="Subscribe me.">
+			  <i class=""></i>RSS
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">
+			<h1> 2024 碎碎念</h1>
+		</div>
+	
+
+
+
+
+	
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("0k2b1NPxArw0N2DtgkKe7jAs-gzGzoHsz", "zc6S1tCcBeWgk8rDu1bJbfJf");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+	
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <h1 id="有点惭愧的前言"><a class="header-anchor" href="#有点惭愧的前言"></a>有点惭愧的前言</h1>
+<p>打眼一望，博客上次更新的日期竟然是在 2019 年，这 6 年里接近一半时间都处在疫情之中，而在疫情即将放开的 22 年本人毅然决然的从一家央企辞职回家（谁也没想到口罩会以这种形式突然放开🤷），回家之后则在本地某腰部传统制造业任职。这 6 年时间恍恍惚惚眨眼就过，期间以人生最密集的频率参加了好多朋友的婚礼，大大小小，线上线下，确实有些羡慕；也因为各种机缘巧合认识了几个朋友（主要是没想到人到 30 还能认识新朋友，我这个人并不愿意社交）；23 年去看了最喜欢的万能青年旅店上海梅奔专场，24 年又在老家音乐节上看到万青的压轴演出（万青牛逼）。哦，对了，23 年养了一只🐱，名字叫图灵（哈哈哈，想必计算机从业者对这个名字并不陌生），小图胆子小得很，写这篇碎碎念的时候，还躲在老家的卧室床帘下面不出来。</p>
+<p><img src="https://s2.loli.net/2025/01/31/4DzYswMELC57qVf.jpg" alt="IMG_7926.jpeg" title="图灵美照"></p>
+<p>简简单单总结了这 6 年的过往，里面竟然一点技术也没提到，看样子果然是年纪大了，又或者如我所说：并没有那么喜欢技术。不管如何，现在的我和 6 年前确实不太一样了，虽然还是喜欢钻研点东西，但可惜已没有自己的时间，虽然还对技术有所追求，但已对工作作出太多妥协。其实当初建立这个博客的目的就是想记录自己的技术成长，可惜懒懒的我并没有坚持下来，从 19 年断更至今，实在是惭愧😳。不过经历了 2024 这让人难忘的一年，让我又拾起了想要记录的心思，虽然未必是技术的内容（或许我关注的点早已不只有技术了）。</p>
+<a id="more"></a>
+<h1 id="不知怎么描述的-2024"><a class="header-anchor" href="#不知怎么描述的-2024"></a>不知怎么描述的 2024</h1>
+<blockquote>
+<p>2024 以一个令人憧憬充满期待的样子开局，最后又以莫名其妙、一地鸡毛的现实收尾。</p>
+</blockquote>
+<h2 id="没那么开心的装修经历"><a class="header-anchor" href="#没那么开心的装修经历"></a>没那么开心的装修经历</h2>
+<p>22 年新房交付，经过一段时间的考虑，认为待在一个国企里面虽然稳定，但没有太大的发展前景（仅就个人而言），薪资也谈不上高，于是在下半年机缘巧合下辞职回了老家，最终在 24 年才决定开始装修（我是真的有拖延症），在真正装修之前又花了 1 个多月的时间奔跑在各大 4S 店看车，交车之后马不停蹄的去跑各个装修公司、全屋定制聊方案，看效果图。总的来讲 24 年上半年既兴奋又辛苦，印象中从 2 月份看车开始到 24 年年底，几乎没有完整的周末，可以说周周周末 2 天都在外面奔波，总结起来就一个累字🤯。</p>
+<p>进入 8 月份硬装总算结束，本以为没有踩到装修公司的坑，还在一旁暗自窃喜，谁能想到后面的全屋定制会这么一波三折。当初找了居然之家的自营装修公司，又处在刚刚了解家居装修的阶段，所以对装修公司的要求和意见没有那么多，况且这家的工人师傅干的活确实还是可以没啥大问题，因此也就相对顺利的结束了硬装。但是在全屋定制阶段，对于已经积累了不少装修知识的我来说，想要的风格前后发生了不少变化，光是效果图总共出了不下 3 版，一直到 10 月国庆期间才最终定稿。而后矛盾开始集中爆发，首先对于约定的生产安装周期并没有严格遵守，一直拖到 11 月初才开始安装，并且对方对于拖延这回事十分不在意；开始安装后，一直缺料导致安装师傅无法正常安装，反馈后也并不会及时补料；对于水电交底时沟通的净水设备尺寸，设计师并没有考虑进去，导致安装的软水机需要拆卸重新安装而产生费用问题；因为安装师傅操作不注意导致漏水保护器损坏的问题；还有一堆尺寸、显而易见不合理的问题，而对方的态度十分淡然，给我的感觉就是并不在意。林林总总问题矛盾并不少，但好在在 2024 年最后一个周末双方还算“心平气和”的商量好了处理办法，后面会一点一点去解决能解决的问题。</p>
+<p><img src="https://s2.loli.net/2025/01/31/pS9B5uhJRPxjkUL.jpg" alt="IMG_8568.JPG" title="第二版效果图，还没那么包豪斯"></p>
+<p>现在想想和全屋定制的矛盾一定程度上也是我的性格造成的：追求完美、信奉慢工出细活、喜欢研究透了再行动，最后叠加这样一个不是太负责的本地工厂和设计师，造成了长达 2 个多月的不愉快。不过并不后悔，我的房子我做主，我想要的风格还是很棒的，感兴趣的朋友可以看看<a href="https://www.bilibili.com/video/BV1imy3Y1Ejg" target="_blank" rel="noopener">包豪斯</a>。</p>
+<h2 id="令人无奈的工作经历"><a class="header-anchor" href="#令人无奈的工作经历"></a>令人无奈的工作经历</h2>
+<p>其实从上家单位离职来到这家本地的制造业公司之后就见识了很多和以前不一样的事情，平日里和朋友有数不清的吐槽，但谁也没想到 24 年年底突然宣布部门解散，不过给每个人安排了一个内部的岗位，本以为这样的结局勉强能够接受，然后就见识到公司的各种骚操作了：转岗降薪、新公司还没签合同就谈赔偿裁人、不按法律规定给补偿等等等。虽然侥幸在这波组织架构调整 + 广进计划的双重 BUFF 下存活下来了，但是以了解到的原部门同事现状和小道消息，猜测 25 年情况不容乐观。</p>
+<p>大环境经济不好，传统制造业并不好过，新分配的公司在集团内又属于盈利排名倒数行列，新一波的广进计划还在一旁蠢蠢欲动，各种因素叠加在一起迫使我不得不作出一些改变了。想想最近特朗普发的加密货币，有的人趁机赚得盆满钵满，有的人一听到虚拟货币就脱口而出 SB，甚至连哪个虚拟货币都没问，可见机会永远是留给有准备的人的。</p>
+<p>好多人问过我后不后悔从上家公司离职回来，想了想，感觉也没有那么后悔。现在的处境确实有点糟糕，工作压力上比之前大，技术上从来了这家传统企业几乎就没有太多的提升，但山东人的乡土情结真的很难让外省人理解（虽然待过的这俩城市坐高铁也就 3 个小时）。当时思索了一段时间，没那么长，但也没那么短，碰到机会也就回来了。其实今年的年终总结的基调整体偏悲观，但当时选中的这家企业真的不算差：国家重点实验室、薪资待遇还不错、刚来半年写了不到 200 行代码😳、专注技术预研，可惜在时代浪潮面前，渺小的个人很容易被裹挟进去，国重摘牌、部门解散、被分流到集团内部排名倒数的公司是谁也想不到的。</p>
+<p><img src="https://s2.loli.net/2025/01/31/KmEoCUk6h1lBOtS.jpg" alt="IMG_8926-min.jpg" title="雨后的公司园区"></p>
+<h1 id="期待有点不同的-2025"><a class="header-anchor" href="#期待有点不同的-2025"></a>期待有点不同的 2025</h1>
+<p>除夕夜洋洋洒洒写了差不多 2000 字的回首，也是时候展望一下已经到来的 2025 了。没那么开心的 2024，有遗憾也有成长，装修这项费心费力的事情让我懂得了不将就、学会拒绝、没必要做个老好人。年底合租舍友搬走前还闹了一点小矛盾，恐怕也是自己平时待人太过友善，最后讲出站在自己立场的真实想法，反倒让对方认为我在斤斤计较。思来想去恐怕自己的性格要做出一些改变了，不过想想从很早之前为了显得自己和这个社会没那么格格不入，就在慢慢把自己变得十分和气，可以对所有人作出妥协，现在想必要做回真实的自己了。</p>
+<p>说了这么多总算来到立 FLAG 的环节了，回想之前几次 FLAG 的下场，这次还是脚踏实地点吧：</p>
+<ul>
+<li>25 年产出一篇文章，题材不限技术、生活、爱好</li>
+<li>性格上变得自私一点，不要随便对人妥协（比较空泛的一条，但真的需要作出一点改变了）</li>
+</ul>
+<p>哈哈哈，是的，没有看错，今年只有 2 条，不搞虚的，只有纯纯想要真正去做的！不过再多说一点，希望 2025 这一年：工作上争取跳槽成功，从这个泥潭里挣脱出去（虽然可能公司会先下手😮‍💨），技术上的追求要一如既往的保持下去，生活上努力做回真实的自己吧。</p>
+<p><img src="https://s2.loli.net/2025/01/31/rCINm75WTb34eg1.jpg" alt="b1eaba6a022752bfbef098732c93dece.JPG" title="2023雷暴雨中的上海梅奔专场"></p>
+	  
+	</div>
+	
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5c317147aa0b7834"></script>
+
+	<div>
+  	<center>
+	<div class="pagination">
+
+    
+    
+    <a type="button" class="btn btn-default disabled"><i class="fa fa-arrow-circle-o-left"></i>上一页</a>
+    
+
+    <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
+    
+    <a href="/2019/01/06/summary-of-the-end-of-2018/" type="button" class="btn btn-default ">下一页<i
+                class="fa fa-arrow-circle-o-right"></i></a>
+    
+
+    
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+    <h2 class="title">留言</h2>
+
+    
+    <div id="disqus_thread" class="ds-thread">
+        <script type="text/javascript">
+            /**
+             * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+             * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+             */
+                /*
+                 var disqus_config = function () {
+                 this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+                 this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                 };
+                 */
+            (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+
+                s.src = '//xuexiaoao.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by
+                Disqus.</a></noscript>
+    </div>
+    
+</section>
+
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2025-01-28 
+	</div>
+	
+
+	
+		<span id="/2025/01/28/2024-sui-sui-nian/" class="leancloud_visitors" data-flag-title="2024 碎碎念">
+		<span class="post-meta-item-icon">
+			<i class="fa fa-eye"></i>
+		</span>
+		<span class="post-meta-item-text"></span>
+		<span class="leancloud-visitors-count"></span>
+		</span>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/个人/">个人<span>3</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/年终总结/">年终总结<span>3</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+<script type="text/javascript">
+var disqus_shortname = 'xuexiaoao';
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2025 Cooper
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a>,<a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>,<a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a> and <a href="http://getbootstrap.com/" target="_blank">BOOTSTRA.386</a>. 
+     <br> Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind.386</a>.    
+</p>
+ </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>⬆︎TOP</span>
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+</body>
+   </html>

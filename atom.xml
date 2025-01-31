@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>cooper&#39;s blog</title>
+  
+  <subtitle>从 0 开始的小破站</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://xuexiaoao.github.io/"/>
+  <updated>2025-01-31T03:55:34.441Z</updated>
+  <id>https://xuexiaoao.github.io/</id>
+  
+  <author>
+    <name>Cooper</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2024 碎碎念</title>
+    <link href="https://xuexiaoao.github.io/2025/01/28/2024-sui-sui-nian/"/>
+    <id>https://xuexiaoao.github.io/2025/01/28/2024-sui-sui-nian/</id>
+    <published>2025-01-28T05:44:48.000Z</published>
+    <updated>2025-01-31T03:55:34.441Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;有点惭愧的前言&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#有点惭愧的前言&quot;&gt;&lt;/a&gt;有点惭愧的前言&lt;/h1&gt;
+&lt;p&gt;打眼一望，博客上次更新的日期竟然是在 2019 年，这 6 年里接近一半时间都处在疫情之中，而在疫情即将放开的 22 年本人毅然决然的从一家央企辞职回家（谁也没想到口罩会以这种形式突然放开🤷），回家之后则在本地某腰部传统制造业任职。这 6 年时间恍恍惚惚眨眼就过，期间以人生最密集的频率参加了好多朋友的婚礼，大大小小，线上线下，确实有些羡慕；也因为各种机缘巧合认识了几个朋友（主要是没想到人到 30 还能认识新朋友，我这个人并不愿意社交）；23 年去看了最喜欢的万能青年旅店上海梅奔专场，24 年又在老家音乐节上看到万青的压轴演出（万青牛逼）。哦，对了，23 年养了一只🐱，名字叫图灵（哈哈哈，想必计算机从业者对这个名字并不陌生），小图胆子小得很，写这篇碎碎念的时候，还躲在老家的卧室床帘下面不出来。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://s2.loli.net/2025/01/31/4DzYswMELC57qVf.jpg&quot; alt=&quot;IMG_7926.jpeg&quot; title=&quot;图灵美照&quot;&gt;&lt;/p&gt;
+&lt;p&gt;简简单单总结了这 6 年的过往，里面竟然一点技术也没提到，看样子果然是年纪大了，又或者如我所说：并没有那么喜欢技术。不管如何，现在的我和 6 年前确实不太一样了，虽然还是喜欢钻研点东西，但可惜已没有自己的时间，虽然还对技术有所追求，但已对工作作出太多妥协。其实当初建立这个博客的目的就是想记录自己的技术成长，可惜懒懒的我并没有坚持下来，从 19 年断更至今，实在是惭愧😳。不过经历了 2024 这让人难忘的一年，让我又拾起了想要记录的心思，虽然未必是技术的内容（或许我关注的点早已不只有技术了）。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="个人" scheme="https://xuexiaoao.github.io/categories/%E4%B8%AA%E4%BA%BA/"/>
+    
+    
+      <category term="年终总结" scheme="https://xuexiaoao.github.io/tags/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2018 年终小结</title>
+    <link href="https://xuexiaoao.github.io/2019/01/06/summary-of-the-end-of-2018/"/>
+    <id>https://xuexiaoao.github.io/2019/01/06/summary-of-the-end-of-2018/</id>
+    <published>2019-01-06T12:06:31.000Z</published>
+    <updated>2025-01-31T03:55:34.445Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;前言&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;
+&lt;p&gt;参加工作也有一年多了，去年跟风写了&lt;a href=&quot;https://xuexiaoao.github.io/2017-final-summary-and-plan/&quot;&gt;2017 年度总结和计划&lt;/a&gt;，列出了一堆计划，坚持了一段时间后，然后就没有什么事情了😰。想想写下那些计划时的踌躇满志，也是蛮尴尬的。总体来看，虽没有按照指定的计划执行，但是这一年的收获也还算不小。接下来，就来小结今年的成果，顺带展望 2019（喂，写下这篇文章的时候，已经是 2019 了😴）。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="个人" scheme="https://xuexiaoao.github.io/categories/%E4%B8%AA%E4%BA%BA/"/>
+    
+    
+      <category term="年终总结" scheme="https://xuexiaoao.github.io/tags/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>持续集成发布 Hexo</title>
+    <link href="https://xuexiaoao.github.io/2018/02/03/post-hexo-with-travis-ci/"/>
+    <id>https://xuexiaoao.github.io/2018/02/03/post-hexo-with-travis-ci/</id>
+    <published>2018-02-03T09:58:29.000Z</published>
+    <updated>2018-02-03T14:36:29.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;http://www.ruanyifeng.com/blogimg/asset/2017/bg2017121901.png&quot; alt=&quot;travis logo&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;每次写完新文章后，都需要手动推送到&lt;a href=&quot;https://github.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Gayhub&lt;/a&gt;的分支上，这样的重复性操作很容易让人厌烦，而且博客源码和博客本身是分离的，只有博客才有版本控制，所以如果身边没有博客源码，那么就不能发布博客了。基于以上的因素，决定采用&lt;a href=&quot;https://travis-ci.org/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Travis CI&lt;/a&gt;对博客使用持续集成的方式发布文章。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;在真正开始之前，需要在博客仓库上新建一个 hexo 分支，存储博客源码，master 分支则继续存储生成的静态博客。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Blog" scheme="https://xuexiaoao.github.io/categories/Blog/"/>
+    
+    
+      <category term="hexo" scheme="https://xuexiaoao.github.io/tags/hexo/"/>
+    
+      <category term="CI" scheme="https://xuexiaoao.github.io/tags/CI/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《单核工作法图解》--读书笔记</title>
+    <link href="https://xuexiaoao.github.io/2018/01/28/monotasking-after-reading/"/>
+    <id>https://xuexiaoao.github.io/2018/01/28/monotasking-after-reading/</id>
+    <published>2018-01-28T15:27:23.000Z</published>
+    <updated>2018-01-27T16:00:00.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;每个人都有非常多的想法，但是最后要么只是想一想，要么三分钟热度，只有极少数人才会坚持下来，这些人无一例外的对时间管理很是精通。本文主要记录《单核工作法图解》一书的感悟，作者是 Staffan Nöteberg，曾写过《番茄工作法图解》这本畅销书。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&quot;https://camo.githubusercontent.com/c7591c24e3cf1d248eca89a0571091ab96dd8dcc/68747470733a2f2f696d67332e646f7562616e696f2e636f6d2f6c7069632f7332393630323735342e6a7067&quot; alt=&quot;githb_url&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="笔记" scheme="https://xuexiaoao.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="GTD" scheme="https://xuexiaoao.github.io/tags/GTD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>持续优化 Hexo</title>
+    <link href="https://xuexiaoao.github.io/2018/01/15/continuous-optimization-hexo/"/>
+    <id>https://xuexiaoao.github.io/2018/01/15/continuous-optimization-hexo/</id>
+    <published>2018-01-15T14:50:30.000Z</published>
+    <updated>2018-01-20T16:00:00.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文主要记录 Hexo 的优化历程，以备后面翻阅。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Blog" scheme="https://xuexiaoao.github.io/categories/Blog/"/>
+    
+    
+      <category term="hexo" scheme="https://xuexiaoao.github.io/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>打造个人阅读追踪系统</title>
+    <link href="https://xuexiaoao.github.io/2018/01/13/create-personal-reading-tracking-system/"/>
+    <id>https://xuexiaoao.github.io/2018/01/13/create-personal-reading-tracking-system/</id>
+    <published>2018-01-13T13:03:34.000Z</published>
+    <updated>2018-01-20T16:00:00.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;偶然看到&lt;a href=&quot;https://juejin.im/post/59d975b6f265da065f04d8ff&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&amp;lt;&amp;lt;我也来打造一个个人阅读追踪系统&amp;gt;&amp;gt;&lt;/a&gt;，觉得这个想法非常不错。于是利用工作外的时间，经过半个月的折腾，初步搭成了一个自动化的个人阅读追踪系统。在这个系统搭成后，才发现 Read it Later = Read Never 离自己好近。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;工具&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#工具&quot;&gt;&lt;/a&gt;工具&lt;/h2&gt;
+&lt;p&gt;包括但不仅仅局限于下面的工具，这里我使用&lt;em&gt;Instapaper&lt;/em&gt;作为稍后阅读的工具，&lt;em&gt;IFTTT&lt;/em&gt;作为连接&lt;em&gt;Instapaper&lt;/em&gt;和&lt;em&gt;Cloud&lt;/em&gt;的中枢，而&lt;em&gt;WebTask&lt;/em&gt;作为我的云端处理工具，负责真正请求各类 API。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Github&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.zenhub.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Zenhub&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.instapaper.com&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Instapaper&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://ifttt.com&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;IFTTT&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://webtask.io&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;WebTask&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="idea" scheme="https://xuexiaoao.github.io/categories/idea/"/>
+    
+    
+      <category term="GTD" scheme="https://xuexiaoao.github.io/tags/GTD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2017 年度总结和计划</title>
+    <link href="https://xuexiaoao.github.io/2017/12/31/2017-final-summary-and-plan/"/>
+    <id>https://xuexiaoao.github.io/2017/12/31/2017-final-summary-and-plan/</id>
+    <published>2017-12-31T15:04:53.000Z</published>
+    <updated>2018-01-09T04:00:00.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;前言&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;
+&lt;p&gt;拖延症的我终于在 2017 年 12 月 31 日 23:59 写下了这篇文章。&lt;/p&gt;
+&lt;p&gt;2017 年过的很快，上半年忙忙碌碌的准备毕业顺带着找了几个星期的工作，最终选择了联通软件研究院，紧接着就来到了济南，一个遍地把子肉的泉城😭参加工作。来到公司后，遇到了对我敦敦教导的师傅、平易近人的老大还有一群友善的同事。在长达半年的试用期里，发现了自己非常非常多的不足，同时也接触到了以前没有机会接触的领域，谨以此篇文章总结我的 2017，展望未来！&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="个人" scheme="https://xuexiaoao.github.io/categories/%E4%B8%AA%E4%BA%BA/"/>
+    
+    
+      <category term="年终总结" scheme="https://xuexiaoao.github.io/tags/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/"/>
+    
+  </entry>
+  
+</feed>

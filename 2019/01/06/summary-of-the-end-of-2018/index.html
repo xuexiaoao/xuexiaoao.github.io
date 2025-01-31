@@ -1,0 +1,436 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  
+  <title>2018 年终小结 | cooper&#39;s blog</title>
+  <meta name="author" content="Cooper">
+  
+  <meta name="description" content="从 0 开始的小破站">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="2018 年终小结"/>
+  <meta property="og:site_name" content="cooper&#39;s blog"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+
+  
+    <link rel="stylesheet" href="/css/gitter.css" media="screen" type="text/css">
+    
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">cooper&#39;s blog</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class=""></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class=""></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class=""></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class=""></i>About
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/atom.xml" title="Subscribe me.">
+			  <i class=""></i>RSS
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">
+			<h1> 2018 年终小结</h1>
+		</div>
+	
+
+
+
+
+	
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("0k2b1NPxArw0N2DtgkKe7jAs-gzGzoHsz", "zc6S1tCcBeWgk8rDu1bJbfJf");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+	
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <h3 id="前言"><a class="header-anchor" href="#前言"></a>前言</h3>
+<p>参加工作也有一年多了，去年跟风写了<a href="https://xuexiaoao.github.io/2017-final-summary-and-plan/">2017 年度总结和计划</a>，列出了一堆计划，坚持了一段时间后，然后就没有什么事情了😰。想想写下那些计划时的踌躇满志，也是蛮尴尬的。总体来看，虽没有按照指定的计划执行，但是这一年的收获也还算不小。接下来，就来小结今年的成果，顺带展望 2019（喂，写下这篇文章的时候，已经是 2019 了😴）。</p>
+<a id="more"></a>
+<h3 id="回顾-2018"><a class="header-anchor" href="#回顾-2018"></a>回顾 2018</h3>
+<p>年初转正后，终于不再像之前轻松到每天五点准时下班，渐渐的手里工作越来越多，接触到的方向也越来越广，压力也逐渐变大，甚至有几次发版本一直到深夜 12 点。这一年，上半年差不多都沉浸在<strong>React</strong>前端方向，虽然不是自己感兴趣的内容，但也是认真研究了一段时间，随着新加入的同事越来越多，甚至来了一个真正的前端 er，需要我这种伪前端去写的东西越来越少了，这才有机会把精力转向后端。</p>
+<p>有了时间之后，加上组内想要转向<strong>Spring Cloud</strong>微服务技术栈，所以花费了大量时间是去调研和实践微服务相关的技术实现，也总结了几篇文章，算是一点输出。</p>
+<p>在这一年，发现了自己有别于同事的一项技能：<strong>检索能力</strong>，不止一次听到同事提到：“我怎么没有搜到”，“在哪里可以查到”，等等类似的内容。在此以前，真的没有发现检索也是一种能力，可能还是要归功于<strong>Google</strong>吧。</p>
+<p>除此之外，发现除了 Coding，自己对于<strong>如何提升团队效率</strong>、<strong>规范开发、发布流程</strong>、<strong>代码整洁</strong>等等软技能非常感兴趣，甚至花费了大量的时间去实践某些思路，但是前方的道路是遥远且曲折的，在我们组内恐怕是很难施展开手脚。但这也明确了我理想中自己的样子和想要加入团队的氛围。</p>
+<p>接下来是对去年列出计划的检查：</p>
+<ul>
+<li>每个月读一本书，并且有读书笔记（读完 5 本，在读的，额，好多本）</li>
+<li>每周写一篇技术博客并发布到 github 中（去年博客中总共有五篇文章，有一篇还是年终总结😭）</li>
+<li>每天晚上确保至少 2 个小时的学习时间（这个倒是基本上完成了）</li>
+<li>做好文档输出工作，确保日后再有类似工作，一定会找到对应文档（文档有一定的输出，还算可以）</li>
+<li>减肥，保证体重不会超过 2017 年（怎么说呢，年末体检，体重确实没去年沉了，-2 斤）</li>
+<li>学习实践 GTD 方法论，具备一定的时间管理分配能力，并实践到上面计划中（确实学习了，但是坚持的不太好，而且一直在挑选工具体系，有点本末倒置）</li>
+</ul>
+<p>总的来看，有一半没完成吧，果然写年终总结就是在打脸。</p>
+<h3 id="展望-2019"><a class="header-anchor" href="#展望-2019"></a>展望 2019</h3>
+<p>根据 2018 的经验来看，去年的计划有很多不合理的地方，比如每周一篇博客的硬性指标，感觉就像是在完成 KPI 一样，导致断更几周后，完全不想继续写下去了（说白了还是懒，不想写😏）。除了技术性的计划外，今年还打算 Get 一门其他领域的技能。嗯，正好去年 3 月份朋友送了一把尤克里里，今年拿来学学吧（去年送的，今年才想起来学，这…）。</p>
+<p>接下来列出 2019 年的计划：</p>
+<ul>
+<li>每月一书，最好有读书笔记或者思维导图</li>
+<li>学习了解一门新的语言或者技术，比如 Go、serverless 等等</li>
+<li>写技术博客，最好是原创，如果没时间可以整理笔记到<a href="https://github.com/xuexiaoao/study-note" target="_blank" rel="noopener">study-note</a></li>
+<li>尝试参与开源项目，提交几次 PR</li>
+<li>继续深入实践 GTD，使之成为习惯</li>
+<li>学会尤克里里，至少会弹两首曲子</li>
+</ul>
+<p>但愿明年的这个时候少打点脸~</p>
+	  
+	</div>
+	
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5c317147aa0b7834"></script>
+
+	<div>
+  	<center>
+	<div class="pagination">
+
+    
+    
+    <a href="/2025/01/28/2024-sui-sui-nian/" type="button" class="btn btn-default"><i
+                class="fa fa-arrow-circle-o-left"></i> 上一页</a>
+    
+
+    <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
+    
+    <a href="/2018/02/03/post-hexo-with-travis-ci/" type="button" class="btn btn-default ">下一页<i
+                class="fa fa-arrow-circle-o-right"></i></a>
+    
+
+    
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+    <h2 class="title">留言</h2>
+
+    
+    <div id="disqus_thread" class="ds-thread">
+        <script type="text/javascript">
+            /**
+             * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+             * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+             */
+                /*
+                 var disqus_config = function () {
+                 this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+                 this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                 };
+                 */
+            (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+
+                s.src = '//xuexiaoao.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by
+                Disqus.</a></noscript>
+    </div>
+    
+</section>
+
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2019-01-06 
+	</div>
+	
+
+	
+		<span id="/2019/01/06/summary-of-the-end-of-2018/" class="leancloud_visitors" data-flag-title="2018 年终小结">
+		<span class="post-meta-item-icon">
+			<i class="fa fa-eye"></i>
+		</span>
+		<span class="post-meta-item-text"></span>
+		<span class="leancloud-visitors-count"></span>
+		</span>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/个人/">个人<span>3</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/年终总结/">年终总结<span>3</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+<script type="text/javascript">
+var disqus_shortname = 'xuexiaoao';
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2025 Cooper
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a>,<a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>,<a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a> and <a href="http://getbootstrap.com/" target="_blank">BOOTSTRA.386</a>. 
+     <br> Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind.386</a>.    
+</p>
+ </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>⬆︎TOP</span>
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+</body>
+   </html>
