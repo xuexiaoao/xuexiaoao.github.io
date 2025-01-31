@@ -4,8 +4,8 @@
 
 # Site
 title: cooper's blog
-subtitle: 从0开始的小破站
-description: 从0开始的小破站
+subtitle: 从 0 开始的小破站
+description: 从 0 开始的小破站
 author: Cooper
 language: zh-CN
 timezone:
@@ -78,7 +78,7 @@ theme: freemind.386
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/xuexiaoao/xuexiaoao.github.io.git
+  repo: git@github.com:xuexiaoao/xuexiaoao.github.io.git
   branch: master
 
 # markdown
@@ -96,7 +96,7 @@ markdown:
     - markdown-it-ins
     - markdown-it-sub
     - markdown-it-sup
-    - markdown-it-emoji  #用emoji插件
+    - markdown-it-emoji  #用 emoji 插件
   anchors:
    level: 1
    collisionSuffix: 'v'

@@ -7,11 +7,11 @@ categories: "idea"
 top: true
 ---
 
-> 偶然看到[<<我也来打造一个个人阅读追踪系统>>](https://juejin.im/post/59d975b6f265da065f04d8ff)，觉得这个想法非常不错。于是利用工作外的时间，经过半个月的折腾，初步搭成了一个自动化的个人阅读追踪系统。在这个系统搭成后，才发现Read it Later = Read Never离自己好近。
+> 偶然看到[<<我也来打造一个个人阅读追踪系统>>](https://juejin.im/post/59d975b6f265da065f04d8ff)，觉得这个想法非常不错。于是利用工作外的时间，经过半个月的折腾，初步搭成了一个自动化的个人阅读追踪系统。在这个系统搭成后，才发现 Read it Later = Read Never 离自己好近。
 
 ## 工具
 
-包括但不仅仅局限于下面的工具，这里我使用*Instapaper*作为稍后阅读的工具，*IFTTT*作为连接*Instapaper*和*Cloud*的中枢，而*WebTask*作为我的云端处理工具，负责真正请求各类API。
+包括但不仅仅局限于下面的工具，这里我使用*Instapaper*作为稍后阅读的工具，*IFTTT*作为连接*Instapaper*和*Cloud*的中枢，而*WebTask*作为我的云端处理工具，负责真正请求各类 API。
 
 * [Github](https://github.com/)
 * [Zenhub](https://www.zenhub.com/)
@@ -19,15 +19,17 @@ top: true
 * [IFTTT](https://ifttt.com)
 * [WebTask](https://webtask.io)
 
+<!--more-->
+
 ## 工作流程
 
-在工作和生活中，我们经常会把文章保存到各种渠道中，比如印象笔记、Instapaper、Pocket等等，而这时，文章分散到各处，不利于我们了解和统计自己的阅读情况。这时是否可以在文章存档到各处后，自动在GItHub中创建一个Issues，而日后对文章的评论和圈点也会体现在Issues中，而且还有一个可视化的工具，详尽的展示了这一段时间内你的阅读情况，从而可以达到展示和督促的作用。
+在工作和生活中，我们经常会把文章保存到各种渠道中，比如印象笔记、Instapaper、Pocket 等等，而这时，文章分散到各处，不利于我们了解和统计自己的阅读情况。这时是否可以在文章存档到各处后，自动在 GItHub 中创建一个 Issues，而日后对文章的评论和圈点也会体现在 Issues 中，而且还有一个可视化的工具，详尽的展示了这一段时间内你的阅读情况，从而可以达到展示和督促的作用。
 
 ![工作流程](https://s1.ax1x.com/2018/01/14/pYyosf.jpg)
 
-## 初始化WebTask
+## 初始化 WebTask
 
-webTask作为*Serverless*架构的服务提供者，可以很方便的让我们在云端执行各类任务，在本文中，它的主要作用就是请求GitHub的API，以实现各类功能，比如给某个Issues添加评论、关闭某个Issues......
+webTask 作为*Serverless*架构的服务提供者，可以很方便的让我们在云端执行各类任务，在本文中，它的主要作用就是请求 GitHub 的 API，以实现各类功能，比如给某个 Issues 添加评论、关闭某个 Issues......
 
 ### 安装命令行工具
 
@@ -38,7 +40,7 @@ wt init <YOUR-EMAIL>
 
 ### 创建项目
 
-新建一个node工程并添加index.js文件，补充如下代码：
+新建一个 node 工程并添加 index.js 文件，补充如下代码：
 
 ```javascript
 const Express = require('express')
@@ -54,7 +56,7 @@ require('./routes/reading')(app)
 module.exports = Webtask.fromExpress(app)
 ```
 
-创建/routes/reading.js文件，这里以在仓库创建Issues为例，完整代码可参考[xuexiaoao/demo.serverless-mern](https://github.com/xuexiaoao/demo.serverless-mern)
+创建/routes/reading.js 文件，这里以在仓库创建 Issues 为例，完整代码可参考[xuexiaoao/demo.serverless-mern](https://github.com/xuexiaoao/demo.serverless-mern)
 
 ```javascript
 require('es6-promise').polyfill()
@@ -106,50 +108,50 @@ module.exports = (app) => {
 }
 ```
 
-这里有几个地方需要注意:
+这里有几个地方需要注意：
 
-* REPO_OWNER：这是你的github名字
-* REPO_NAME：这是你的仓库名称，之后所有的Issues都会创建到这里
-* REPO_ID：这个id可以通过github api获得:https://api.github.com/users/${REPO_OWNER}
-* GITHUB_ACCESS_TOKEN：这个没什么好说的就是在github上新建一个Personal access tokens
-* ZENHUB_ACCESS_TOKEN：这个是在zenhub新建一个token
-* ZENHUB_ACCESS_TOKEN_V4：这个官方api没有说明，但是可以打开zenhub对应仓库的浏览器开发者工具，任意找一个是 [api.zenhub.io](http://disq.us/url?url=http%3A%2F%2Fapi.zenhub.io%3AFORqzzRjWezjzHYTAiHvtcMGeAQ&cuid=3228622) 的请求，在 Request Headers中找到 x-authentication-token 对应的值就是这个 token 了
+* REPO_OWNER：这是你的 github 名字
+* REPO_NAME：这是你的仓库名称，之后所有的 Issues 都会创建到这里
+* REPO_ID：这个 id 可以通过 github api 获得:https://api.github.com/users/${REPO_OWNER}
+* GITHUB_ACCESS_TOKEN：这个没什么好说的就是在 github 上新建一个 Personal access tokens
+* ZENHUB_ACCESS_TOKEN：这个是在 zenhub 新建一个 token
+* ZENHUB_ACCESS_TOKEN_V4：这个官方 api 没有说明，但是可以打开 zenhub 对应仓库的浏览器开发者工具，任意找一个是 [api.zenhub.io](http://disq.us/url?url=http%3A%2F%2Fapi.zenhub.io%3AFORqzzRjWezjzHYTAiHvtcMGeAQ&cuid=3228622) 的请求，在 Request Headers 中找到 x-authentication-token 对应的值就是这个 token 了
 
-### 上传到webtask
+### 上传到 webtask
 
-这里需要使用上面准备的token，然后执行命令即可。由于使用webtask的上下文绑定工具*webtask-tools*，它会对一些敏感信息，比如我们的token进行加密，所以不必担心token泄漏的问题。
+这里需要使用上面准备的 token，然后执行命令即可。由于使用 webtask 的上下文绑定工具*webtask-tools*，它会对一些敏感信息，比如我们的 token 进行加密，所以不必担心 token 泄漏的问题。
 
 ```shell
 wt create index --bundle --secret GITHUB_ACCESS_TOKEN=$GITHUB_ACCESS_TOKEN --secret ZENHUB_ACCESS_TOKEN=$ZENHUB_ACCESS_TOKEN --secret ZENHUB_ACCESS_TOKEN_V4=$ZENHUB_ACCESS_TOKEN_V4
 ```
 
-## 使用IFTTT自动化处理
+## 使用 IFTTT 自动化处理
 
-那如何保证一有文章存入*Instapaper*中，就会新建一个Issues呢，这里就需要IFTTT这个神器了，这里不对IFTTT做详细介绍，如果有机会，可以另开一篇文章，专门介绍IFTTT。
+那如何保证一有文章存入*Instapaper*中，就会新建一个 Issues 呢，这里就需要 IFTTT 这个神器了，这里不对 IFTTT 做详细介绍，如果有机会，可以另开一篇文章，专门介绍 IFTTT。
 
 得益于 IFTTT 非常丰富的第三方服务，IFTTT 可以直接创建 Instapaper 与 GitHub Issue 相集成的 Applet：[If new item saved, then create a new issue - IFTTT](https://ifttt.com/applets/54307045d-if-new-item-saved-then-create-a-new-issue)，就可以在当 Instapaper 新增文章的时候，自动在 GitHub 所指定的仓库 [xuexiaoao/reading](https://github.com/xuexiaoao/reading/issues) 中创建一个新的 Issue 并添加相应的标题、链接以及描述等相关信息
 
-这里给出*把文章保存到Instapaper后，自动在仓库创建Issues的例子*，其他的操作都可以类似处理，如果有疑问，可以在本文留言。
+这里给出*把文章保存到 Instapaper 后，自动在仓库创建 Issues 的例子*，其他的操作都可以类似处理，如果有疑问，可以在本文留言。
 
 <img src='https://s1.ax1x.com/2018/01/14/ptXYtJ.png' width="30%" height="30%" >
 
 <img src='https://s1.ax1x.com/2018/01/14/ptONsf.png' width="30%" height="30%" >
 
-## 集成ZenHub
+## 集成 ZenHub
 
-现在仅仅会自动新建Issues，而我们还需要把Issues添加到Milestone中，就可以利用Zenhub的图表功能，可视化的查看和分析你的阅读情况。
+现在仅仅会自动新建 Issues，而我们还需要把 Issues 添加到 Milestone 中，就可以利用 Zenhub 的图表功能，可视化的查看和分析你的阅读情况。
 
-Github提供WebHock功能，方便的让我们监控仓库的各类事件，从而触发某个自定义的功能，而这些功能我们已经放到了WebTask上面了。
+Github 提供 WebHock 功能，方便的让我们监控仓库的各类事件，从而触发某个自定义的功能，而这些功能我们已经放到了 WebTask 上面了。
 
 ![create_webhock](https://s1.ax1x.com/2018/01/14/ptjXPH.png)
 
-这里你需要改的就是*Payload URL*，它是你在执行[上传到webtask](#上传到webtask)后得到的一个URL，其余的可以参考上图。
+这里你需要改的就是*Payload URL*，它是你在执行[上传到 webtask](#上传到webtask)后得到的一个 URL，其余的可以参考上图。
 
 
 
 ## 其他功能示例
 
-### 在Instapaper做笔记
+### 在 Instapaper 做笔记
 
 ```javascript
   app.post('/reading-note', (req, res) => {
@@ -184,7 +186,7 @@ Github提供WebHock功能，方便的让我们监控仓库的各类事件，从�
   })
 ```
 
-### Instapaper归档文章
+### Instapaper 归档文章
 
 ```javascript
   app.get('/reading', (req, res) => {
@@ -241,7 +243,7 @@ Github提供WebHock功能，方便的让我们监控仓库的各类事件，从�
 
 至此，一个自动化的阅读追踪系统已经搭建完成，现在我们就可以查看每天乃至每周的阅读情况了，你只需要定期的查看阅读效果，就可以对自己的阅读计划进行调整和变更。
 
-当然还有一些问题需要处理，比如对文章进行分类以使这套系统更有参考性，是否需要把在Instapaper中的笔记保存到自己的知识库中。
+当然还有一些问题需要处理，比如对文章进行分类以使这套系统更有参考性，是否需要把在 Instapaper 中的笔记保存到自己的知识库中。
 
 ## 参考资料
 

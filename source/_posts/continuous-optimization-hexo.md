@@ -1,16 +1,18 @@
 ---
-title: 持续优化Hexo
+title: 持续优化 Hexo
 date: 2018-01-15 22:50:30
 updated: 2018-01-21 00:00:00
 tags: hexo
 categories: "Blog"
 ---
 
-本文主要记录Hexo的优化历程，以备后面翻阅。
+本文主要记录 Hexo 的优化历程，以备后面翻阅。
 
-## 添加emoji支持
+<!--more-->
 
-由于Hexo的Markdown语法并不支持emoji表情，所以只能通过第三方插件来实现此功能
+## 添加 emoji 支持
+
+由于 Hexo 的 Markdown 语法并不支持 emoji 表情，所以只能通过第三方插件来实现此功能
 
 ### 安装
 
@@ -33,11 +35,11 @@ markdown:
     - markdown-it-emoji
 ```
 
-## 支持Gitter聊天室
+## 支持 Gitter 聊天室
 
-### 新建gitter.swig文件
+### 新建 gitter.swig 文件
 
->  在~/*主题*/layout文件夹下创建，添加如下内容
+>  在~/*主题*/layout 文件夹下创建，添加如下内容
 
 ```javascript
 {% if theme.gitter.enable %}                                                                                                                                                              
@@ -54,7 +56,7 @@ markdown:
 
 * 设置样式
 
-  > 在~/themes/next/source/css\_custom/custom.sty设置打开聊天室Button样式
+  > 在~/themes/next/source/css\_custom/custom.sty 设置打开聊天室 Button 样式
 
   ```css
   .gitter-open-chat-button {                                                                                                                                                  
@@ -70,15 +72,15 @@ markdown:
   }
   ```
 
-* 添加Gitter到主题中
+* 添加 Gitter 到主题中
 
-  >  添加到body div前面
+  >  添加到 body div 前面
 
   ```javascript
   {% include './gitter.swig' %}
   ```
 
-* 在主题配置文件开启gitter
+* 在主题配置文件开启 gitter
 
   ```yaml
   # Gitter
@@ -88,7 +90,7 @@ markdown:
 
 ## 支持字数统计
 
-> wordcount支持字数统计、阅读时长
+> wordcount 支持字数统计、阅读时长
 
 ### 安装插件
 
@@ -109,23 +111,23 @@ post_wordcount:
 
 ## 统计阅读次数
 
-### 集成leancloud
+### 集成 leancloud
 
-#### 获取app_key和app_id
+#### 获取 app_key 和 app_id
 
-在leancloud注册帐号，之后新建一个应用，在此应用里可以找到app_key和app_id
+在 leancloud 注册帐号，之后新建一个应用，在此应用里可以找到 app_key 和 app_id
 
 ![get app_key & app_id](https://s1.ax1x.com/2018/01/20/pRyK8H.png)
 
-#### 新建Class
+#### 新建 Class
 
-> 在新建的应用中创建一个Class，名称必须是Counter，其余默认即可
+> 在新建的应用中创建一个 Class，名称必须是 Counter，其余默认即可
 
 ![create class](https://s1.ax1x.com/2018/01/20/pRyUPg.png)
 
 #### 配置
 
-把app_key和app_id填充到主题配置文件中如下位置
+把 app_key 和 app_id 填充到主题配置文件中如下位置
 
 ```yaml
 leancloud_visitors:
@@ -137,7 +139,7 @@ leancloud_visitors:
 
 ### 添加声明信息
 
-> 在~\themes\next\layout\_macro\post.swig合适位置添加如下内容，我是放在<footer class="post-footer">标签黎明
+> 在~\themes\next\layout\_macro\post.swig 合适位置添加如下内容，我是放在<footer class="post-footer">标签黎明
 
 ```javascript
 {# 版权声明节点 #}
@@ -160,12 +162,12 @@ leancloud_visitors:
         </li>
 
         <li class="post-copyright-date">
-            <strong>发布时间：</strong>{{ post.date.format("YYYY年M月D日 - HH时MM分") }}
+            <strong>发布时间：</strong>{{ post.date.format("YYYY 年 M 月 D 日 - HH 时 MM 分") }}
         </li>  
 
         <li class="post-copyright-license">
           <strong>版权声明： </strong>
-          本文由采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh" rel="license" target="_blank">保留署名-非商业性使用-禁止演绎 4.0-国际许可协议</a> </br>转载请保留以上声明信息！
+          本文由采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh" rel="license" target="_blank">保留署名 - 非商业性使用 - 禁止演绎 4.0-国际许可协议</a> </br>转载请保留以上声明信息！
         </li>
       </ul>
     {% endif %}
@@ -174,7 +176,7 @@ leancloud_visitors:
 
 ### 设置声明样式
 
-> 在~/themes/next/source/css\_custom/custom.styl添加样式
+> 在~/themes/next/source/css\_custom/custom.styl 添加样式
 
 ```css
 .post-copyright {
@@ -188,7 +190,7 @@ leancloud_visitors:
 
 ## 显示文章更新日期
 
-> 因为我用的是Next主题，所以操作非常简单，只需修改主题配置文件即可
+> 因为我用的是 Next 主题，所以操作非常简单，只需修改主题配置文件即可
 
 ```yaml
 post_meta:
@@ -236,20 +238,20 @@ top: true
 
 ## 支持文章分享
 
-### 修改过气API
+### 修改过气 API
 
-> 这是目前找到的唯一支持https的分享插件，但是分享到微信的api有改动，所以需要修改~\themes\next\source\lib\needsharebutton\needsharebutton.js如下位置
+> 这是目前找到的唯一支持 https 的分享插件，但是分享到微信的 api 有改动，所以需要修改~\themes\next\source\lib\needsharebutton\needsharebutton.js 如下位置
 
 ```javascript
 /**
-找到imaSrc定义的位置，改为如下
+找到 imaSrc 定义的位置，改为如下
 **/
 var imgSrc = "https://pan.baidu.com/share/qrcode?w=400&h=400&url=" + encodeURIComponent(myoptions.url);
 ```
 
 ### 启用分享
 
-> 因为next主题已经集成needsharebutton插件，所以只需要开启即可
+> 因为 next 主题已经集成 needsharebutton 插件，所以只需要开启即可
 
 ```yaml
 needmoreshare2:
@@ -270,7 +272,7 @@ needmoreshare2:
       networks: Weibo,Wechat,Douban,QQZone,Twitter,Facebook
 ```
 
-## 开启RSS
+## 开启 RSS
 
 ### 安装插件
 
@@ -289,14 +291,14 @@ feed:
   limit: 20		//一次包含文章数量限制
   hub:  //用不着不管
   content: //订阅文件是否包含整个文章（"true"为是，留空为否）
-  content_limit: 140 //content为否时，包含的文章概要字数
+  content_limit: 140 //content 为否时，包含的文章概要字数
 ```
 
 ##  智能显示更新时间
 
-> 如果没有设置*updated*关键字,Hexo默认取最近一次generate的时间作为更新时间，通常我们的文章不太可能一次性写完，所以真正发布后的更新才需要显示更新时间，这里修改为一天内写完的文章再次修改，不会显示更新时间
+> 如果没有设置*updated*关键字，Hexo 默认取最近一次 generate 的时间作为更新时间，通常我们的文章不太可能一次性写完，所以真正发布后的更新才需要显示更新时间，这里修改为一天内写完的文章再次修改，不会显示更新时间
 
-打开~\themes\next\layout\_macro\post.swig文件，参考如下修改，可以搜索*updated_at*，只修改了两处
+打开~\themes\next\layout\_macro\post.swig 文件，参考如下修改，可以搜索*updated_at*，只修改了两处
 
 ```javascript
 
@@ -339,21 +341,21 @@ sitemap:
 
 #### 验证网站
 
-> 根据Google提示，下载验证文件放到Source文件夹，上传到网站，这里需要注意的是放到Source文件夹的任何文件默认是会被hexo处理的，这样会导致验证失败，下一步给出解决方案
+> 根据 Google 提示，下载验证文件放到 Source 文件夹，上传到网站，这里需要注意的是放到 Source 文件夹的任何文件默认是会被 hexo 处理的，这样会导致验证失败，下一步给出解决方案
 
 ![step-1](https://s1.ax1x.com/2018/01/21/pfywMd.png)![step-2](https://s1.ax1x.com/2018/01/21/pfLwl9.png)
 
 #### 跳过编译验证文件
 
-> 只需要在站点配置文件指定即可，这里的文件路径是相对于Source
+> 只需要在站点配置文件指定即可，这里的文件路径是相对于 Source
 
 ```yaml
 skip_render: ['*.html']
 ```
 
-#### 添加rebots.txt
+#### 添加 rebots.txt
 
-> 在~\source下新建rebots.txt，内容可参考下面
+> 在~\source 下新建 rebots.txt，内容可参考下面
 
 ```yaml
 User-agent: *
